@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Totem Recensioni  | SABR</title>
+<script 
+  src="https://www.paypal.com/sdk/js?client-id=BAA0ZRw_cFHV3nSzYdvvgEBm_KEcjwmrnIjcJFHKgUD8O1w1PKlUCmGOF1SprtlAtKy_bxTldY4gVDR4M4&components=hosted-buttons&disable-funding=venmo&currency=EUR">
+</script>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0f0f0f;
+    color: white;
+}
+
+header {
+    padding: 20px;
+}
+
+header a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+main {
+    padding: 40px;
+    text-align: center;
+}
+
+/* IMMAGINE */
+.product-img {
+    width: 380px;
+    margin: 40px auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* TESTO HERO */
+.hero-text {
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* PACCHETTI */
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.price-card {
+    background: #1a1a1a;
+    padding: 30px;
+    width: 260px;
+    border-radius: 16px;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+}
+
+.price-card h3 {
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.price-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.price-card li {
+    margin-bottom: 10px;
+    color: #bbb;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.featured {
+    background: white;
+    color: black;
+}
+
+.featured .btn {
+    background: black;
+    color: white;
+}
+
+.badge {
+    background: black;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<a href="prodotti.html">← Torna ai prodotti</a>
+</header>
+
+<main>
+
+<!-- IMMAGINE -->
+<img src="totem-personalizzato.jpg" class="product-img">
+
+<!-- TESTO -->
+<div class="hero-text">
+<h1>Trasforma ogni cliente in una recensione.</h1>
+
+<p>
+La maggior parte dei clienti soddisfatti non lascia recensioni.  
+Non perché non vogliono — ma perché è scomodo.  
+
+MagTag elimina ogni frizione.  
+Un semplice tap, e il cliente è già sulla pagina per recensirti.  
+
+Più recensioni, più fiducia, più clienti.
+</p>
+</div>
+
+<!-- PACCHETTI -->
+<!-- ANTEPRIMA MODELLI -->
+<h2 style="margin-top:60px; margin-bottom:30px;">Scegli il tuo Totem</h2>
+
+<div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap;">
+
+    <!-- TOTEM LITE -->
+    <div style="text-align:center;">
+        <img src="totem-lite.jpg" style="width:260px; border-radius:12px;">
+        <h3 style="margin-top:15px;">Totem Lite</h3>
+        <p style="color:#aaa;">Semplice, efficace, pronto all'uso</p>
+    </div>
+
+    <!-- TOTEM PRO -->
+    <div style="text-align:center;">
+        <img src="totem-personalizzato.jpg" style="width:260px; border-radius:12px;">
+        <h3 style="margin-top:15px;">Totem Pro</h3>
+        <p style="color:#aaa;">Personalizzato per il tuo locale</p>
+    </div>
+
+</div>
+<h2 style="margin-bottom:40px;">Scegli la soluzione giusta</h2>
+
+<div class="pricing-grid">
+
+<!-- LITE -->
+<div class="price-card">
+    <h3>Lite</h3>
+    <p class="price">39€</p>
+    <ul>
+        <li>1 Totem NFC</li>
+        <li>Link diretto recensioni</li>
+        <li>Pronto all’uso</li>
+    </ul>
+    <div id="paypal-container-M3Y89GQR8MATC"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "M3Y89GQR8MATC",
+  }).render("#paypal-container-M3Y89GQR8MATC")
+</script>
+</div>
+
+<!-- PRO -->
+<div class="price-card featured">
+    <span class="badge">Più scelto</span>
+    <h3>Pro</h3>
+    <p class="price">69€</p>
+    <ul>
+        <li>Totem personalizzato</li>
+        <li>Design per il tuo locale</li>
+        <li>Maggiore visibilità</li>
+    </ul>
+    <div id="paypal-container-7HMKQMS6CPEFW"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "7HMKQMS6CPEFW",
+  }).render("#paypal-container-7HMKQMS6CPEFW")
+</script>
+</div>
+
+<!-- BUSINESS -->
+<div class="price-card">
+    <h3>Business</h3>
+    <p class="price">99€</p>
+    <ul>
+        <li>1 Totem PRO</li>
+        <li>3 MagTag card</li>
+        <li>Setup completo</li>
+    </ul>
+    <div id="paypal-container-EH6B37XUV7QNC"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "EH6B37XUV7QNC",
+  }).render("#paypal-container-EH6B37XUV7QNC")
+</script>
+</div>
+
+</div>
+
+</main>
+
+</body>
+</html>
