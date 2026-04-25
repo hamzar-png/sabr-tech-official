@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SABR | MagTag</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&family=Jost:wght@400;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <img src="sabr-piccolo.jpg" class="logo-small">
+        <span>SABR</span>
+    </div>
+
+    <nav>
+        <a onclick="openPopup('chiSiamoPopup')">Chi siamo</a>
+        <a href="prodotti.html">MagTag</a>
+        <a onclick="openPopup('contattiPopup')">Contatti</a>
+    </nav>
+</header>
+
+<main>
+
+<section class="hero">
+    <img src="sabr.jpg" class="logo-main">
+
+    <h1 style="font-size:40px; letter-spacing:5px;">
+        Fatti trovare. Ottieni clienti. Con un tap.
+    </h1>
+
+    <p style="max-width:600px;">
+        MagTag è il sistema che collega il mondo fisico e digitale. 
+        Condividi contatti, ottieni recensioni e semplifica ogni interazione.
+    </p>
+
+    <a href="prodotti.html" class="btn-primary">Scopri MagTag</a>
+</section>
+
+<section class="product-preview">
+    <div class="container">
+        <span class="label">MAGTAG</span>
+        <h1>Un sistema. Infiniti utilizzi.</h1>
+
+        <p>
+            Usa MagTag per networking, recensioni, social o sicurezza personale.
+            Una sola tecnologia, infinite possibilità.
+        </p>
+
+        <a href="prodotti.html" class="btn-primary">Vedi prodotti</a>
+    </div>
+</section>
+
+</main>
+
+<!-- POPUP CHI SIAMO -->
+<div id="chiSiamoPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('chiSiamoPopup')">&times;</span>
+
+    <h2>Chi siamo</h2>
+
+    <p class="about-text">
+      Siamo una startup tech che trasforma oggetti semplici in esperienze intelligenti.<br>
+      Il nostro obiettivo è rendere la tecnologia invisibile, naturale, immediata.
+    </p>
+
+    <p class="quote">
+      “Il compito non è vedere ciò che nessuno ha mai visto,<br>
+      ma pensare ciò che nessuno ha mai pensato<br>
+      su ciò che tutti vedono.”
+    </p>
+
+    <p class="author">— Arthur Schopenhauer</p>
+
+  </div>
+</div>
+
+<!-- POPUP CONTATTI -->
+<div id="contattiPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('contattiPopup')">&times;</span>
+
+    <h2>Contatti</h2>
+
+    <p>Per collaborazioni o informazioni:</p>
+
+    <a href="mailto:hamza@sabr-tech.it" style="color:white; display:block; margin-top:20px;">
+      hamza@sabr-tech.it
+    </a>
+
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
