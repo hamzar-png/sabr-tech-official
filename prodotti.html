@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&family=Jost:wght@400;800&display=swap" rel="stylesheet">
 
-    <script 
-      src="https://www.paypal.com/sdk/js?client-id=BAA0ZRw_cFHV3nSzYdvvgEBm_KEcjwmrnIjcJFHKgUD8O1w1PKlUCmGOF1SprtlAtKy_bxTldY4gVDR4M4&components=hosted-buttons&disable-funding=venmo&currency=EUR">
-    </script>
+    <script src="https://www.paypal.com/sdk/js?client-id=BAA0ZRw_cFHV3nSzYdvvgEBm_KEcjwmrnIjcJFHKgUD8O1w1PKlUCmGOF1SprtlAtKy_bxTldY4gVDR4M4&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
 </head>
 
 <body>
@@ -27,92 +25,87 @@
 
 <main class="page-prodotti">
 
-<h1>MAGTAG</h1>
-<p>Un sistema per connettere persone e informazioni con un semplice tap.</p>
+    <h1>MAGTAG</h1>
+    <p>Un sistema per connettere persone e informazioni con un semplice tap.</p>
 
-<h2 style="margin-top:80px;">Per il tuo business</h2>
+    <h2 style="margin-top:80px;">Per il tuo business</h2>
 
-<div class="grid-prodotti">
-
-    <div class="card-p">
-        <p style="text-align:center; margin-bottom:10px; color:#aaa; font-size:12px; letter-spacing:1px;">Tocca per girare</p>
-        <div class="model-container">
-            <div class="card-3d" onclick="this.classList.toggle('flip')">
-                <div class="card-inner">
-                    <div class="card-front"><img src="biglietto-fronte.jpg"></div>
-                    <div class="card-back"><img src="biglietto-retro.jpg"></div>
-                </div>
-            </div>
-        </div>
-        <div class="card-info">
-            <h3>Business Card NFC</h3>
-            <p>Condividi i tuoi contatti in un secondo.</p>
-            <a href="biglietto.html" class="btn-personalizza">Scopri di più</a>
-        </div>
-    </div>
-
-    <div class="card-p">
-        <a href="totem.html">
+    <div class="grid-prodotti">
+        <div class="card-p">
+            <p style="text-align:center; margin-bottom:10px; color:#aaa; font-size:12px; letter-spacing:1px;">Tocca per girare</p>
             <div class="model-container">
-                <img src="totem-personalizzato.jpg" class="img-product">
-            </div>
-        </a>
-        <div class="card-info">
-            <h3>Totem Recensioni</h3>
-            <p>I clienti lasciano recensioni con un tap.</p>
-            <a href="totem.html" class="btn-personalizza">Scopri di più</a>
-        </div>
-    </div>
-
-</div>
-
-<h2 style="margin-top:80px;">Per uso personale</h2>
-
-<div class="grid-prodotti">
-
-    <div class="card-p">
-        <div class="model-container">
-            <img src="smart_portachiavi.jpg" class="img-product">
-        </div>
-        <div class="card-info">
-            <h3>PORTA CHIAVI SMART</h3>
-            <p>In fase di sviluppo. Prenotalo ora per ricevere lo sconto al lancio.</p>
-            <p style="color:#f16522; font-weight:bold; margin-bottom:10px;">🔥 Pre-ordine: 25€ (-10%)</p>
-            <div id="paypal-container-SV9AUB3HJ7YFN"></div>
-            <script>
-              paypal.HostedButtons({ hostedButtonId: "SV9AUB3HJ7YFN" }).render("#paypal-container-SV9AUB3HJ7YFN")
-            </script>
-        </div>
-    </div>
-
-    <div class="card-p">
-        <p style="text-align:center; margin-bottom:10px; color:#aaa; font-size:12px; letter-spacing:1px;">Guarda il retro</p>
-        <div class="model-container">
-            <div class="card-3d" onclick="this.classList.toggle('flip')">
-                <div class="card-inner">
-                    <div class="card-front"><img src="collare-animali.jpg"></div>
-                    <div class="card-back">
-    <img src="collare-retro.jpg">
-</div>
-                        <img src="sabr-piccolo.jpg" style="width:50px; margin-bottom:10px;">
-                        <p style="color:white; font-size:14px;">"Se mi trovi, avvicina il telefono."</p>
+                <div class="card-3d" onclick="this.classList.toggle('flip')">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="biglietto-fronte.jpg"></div>
+                        <div class="card-back"><img src="biglietto-retro.jpg"></div>
                     </div>
                 </div>
             </div>
+            <div class="card-info">
+                <h3>Business Card NFC</h3>
+                <p>Condividi i tuoi contatti in un secondo.</p>
+                <a href="biglietto.html" class="btn-personalizza">Scopri di più</a>
+            </div>
         </div>
-        <div class="card-info">
-            <h3>CIONDOLO SMART</h3>
-            <p>Chi trova il tuo animale può contattarti subito.</p>
-            <div id="paypal-container-G3GTS5F2K68Y8"></div>
-            <script>
-              paypal.HostedButtons({ hostedButtonId: "G3GTS5F2K68Y8" }).render("#paypal-container-G3GTS5F2K68Y8")
-            </script>
+
+        <div class="card-p">
+            <a href="totem.html">
+                <div class="model-container">
+                    <img src="totem-personalizzato.jpg" class="img-product">
+                </div>
+            </a>
+            <div class="card-info">
+                <h3>Totem Recensioni</h3>
+                <p>I clienti lasciano recensioni con un tap.</p>
+                <a href="totem.html" class="btn-personalizza">Scopri di più</a>
+            </div>
         </div>
     </div>
 
-</div>
+    <h2 style="margin-top:80px;">Per uso personale</h2>
+
+    <div class="grid-prodotti">
+        <div class="card-p">
+            <div class="model-container">
+                <img src="smart_portachiavi.jpg" class="img-product">
+            </div>
+            <div class="card-info">
+                <h3>PORTA CHIAVI SMART</h3>
+                <p>In fase di sviluppo. Prenotalo ora per ricevere lo sconto al lancio.</p>
+                <p style="color:#f16522; font-weight:bold; margin-bottom:10px;">🔥 Pre-ordine: 25€ (-10%)</p>
+                <div id="paypal-container-SV9AUB3HJ7YFN"></div>
+                <script>
+                  paypal.HostedButtons({ hostedButtonId: "SV9AUB3HJ7YFN" }).render("#paypal-container-SV9AUB3HJ7YFN")
+                </script>
+            </div>
+        </div>
+
+        <div class="card-p">
+            <p style="text-align:center; margin-bottom:10px; color:#aaa; font-size:12px; letter-spacing:1px;">Guarda il retro</p>
+            <div class="model-container">
+                <div class="card-3d" onclick="this.classList.toggle('flip')">
+                    <div class="card-inner">
+                        <div class="card-front"><img src="collare-animali.jpg"></div>
+                        <div class="card-back" style="background:#111; display:flex; align-items:center; justify-content:center; flex-direction:column; padding:20px;">
+                             <img src="sabr-piccolo.jpg" style="width:50px; margin-bottom:10px;">
+                             <p style="color:white; font-size:14px; text-align:center;">"Se mi trovi, avvicina il telefono."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-info">
+                <h3>CIONDOLO SMART</h3>
+                <p>Chi trova il tuo animale può contattarti subito.</p>
+                <div id="paypal-container-G3GTS5F2K68Y8"></div>
+                <script>
+                  paypal.HostedButtons({ hostedButtonId: "G3GTS5F2K68Y8" }).render("#paypal-container-G3GTS5F2K68Y8")
+                </script>
+            </div>
+        </div>
+    </div>
 
 </main>
+
 <script src="script.js"></script>
 </body>
 </html>
