@@ -1,173 +1,74 @@
-/* RESET E BASI */
+/* RESET */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: #050505;
     color: #ffffff;
     font-family: 'Inter', sans-serif;
-    scroll-behavior: smooth;
 }
 
-/* HEADER - FIX ALLINEAMENTO */
+/* HEADER */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
+    background: rgba(0,0,0,0.9);
     position: sticky;
     top: 0;
-    width: 100%;
     z-index: 1000;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(10px);
 }
-
-.brand {
-    display: flex;
-    align-items: center;
-}
-
-.brand a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-family: 'Jost', sans-serif;
-    font-weight: 800;
-    font-size: 24px;
-    letter-spacing: 6px;
-}
-
-.logo-small {
-    height: 30px;
-    width: auto;
-    display: block;
-}
-
-nav {
-    display: flex;
-    gap: 20px;
-}
-
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-}
+.logo-small { height: 30px; width: auto; }
+nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 14px; text-transform: uppercase; }
 
 /* GRIGLIA PRODOTTI */
-.page-prodotti { padding: 120px 5% 50px; text-align: center; }
-
+.page-prodotti { padding: 100px 5% 50px; text-align: center; }
 .grid-prodotti {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    max-width: 1400px;
-    margin: 50px auto;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
 }
 
+/* CARD FISSA (Per Totem e Portachiavi) */
 .card-p {
     background: #0a0a0a;
     border: 1px solid #1a1a1a;
+    padding: 25px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
-    padding: 20px 0;
-    transition: 0.3s;
+    align-items: center;
 }
+.img-product { max-width: 100%; height: 200px; object-fit: contain; border-radius: 10px; }
 
-/* CONTENITORE 3D */
+/* CARD 3D (Per Biglietto e Ciondolo) */
 .model-container {
     width: 100%;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 250px;
     perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
 }
-
-.card-3d {
-    width: 280px;
-    height: 180px;
-    position: relative;
-    cursor: pointer;
-}
-
+.card-3d { width: 280px; height: 180px; cursor: pointer; position: relative; }
 .card-inner {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
 }
-
-.card-3d.flip .card-inner {
-    transform: rotateY(180deg);
-}
-
+.card-3d.flip .card-inner { transform: rotateY(180deg); }
 .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    overflow: hidden;
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; border-radius: 15px; overflow: hidden;
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
+.card-back { transform: rotateY(180deg); }
+.card-front img, .card-back img { width: 100%; height: 100%; object-fit: cover; }
 
-.card-front img, .card-back img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* INFO */
-.card-info { padding: 30px; text-align: center; flex-grow: 1; }
-.card-info h3 { font-size: 18px; margin-bottom: 10px; letter-spacing: 2px; }
+/* INFO TESTI */
+.card-info h3 { margin: 15px 0 10px; letter-spacing: 2px; }
 .card-info p { color: #888; font-size: 14px; margin-bottom: 20px; }
-
-.btn-personalizza {
-    border: 1px solid #fff;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 2px;
-    transition: 0.3s;
-}
-
-.btn-personalizza:hover { background: #fff; color: #000; }
-
-/* MEDIA QUERIES MOBILE */
-@media (max-width: 600px) {
-    header { padding: 15px; }
-    .brand a { font-size: 20px; letter-spacing: 3px; }
-    .logo-small { height: 25px; }
-    h1 { font-size: 35px !important; letter-spacing: 5px !important; }
-}
-
-/* RIFINITURA FOTO */
-.card-p .card-front img, .card-p .card-back img {
-    border: 1px solid #222;
-}
-
-/* POPUP (Per index.html) */
-.popup {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(10px);
-}
-.popup-content {
-    background: #111;
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 500px;
-    text-align: center;
-    position: relative;
-}
-.close { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; }
+.btn-personalizza { border: 1px solid #fff; color: #fff; padding: 8px 18px; text-decoration: none; font-size: 12px; }
