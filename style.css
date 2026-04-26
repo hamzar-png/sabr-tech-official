@@ -29,13 +29,21 @@ nav {
 .brand {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     font-family: 'Jost', sans-serif;
     font-weight: 800;
     font-size: 24px;
     letter-spacing: 6px;
 }
+.brand img {
+    display: block;}
 
+brand span {
+    font-family: 'Jost', sans-serif;
+    font-weight: 800;
+    letter-spacing: 4px;
+    line-height: 1;
+    }
 .logo-small { height: 60px; }
 
 nav a {
