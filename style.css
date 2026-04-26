@@ -1,10 +1,11 @@
-/* RESET */
+/* RESET GENERALE */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: #050505;
     color: #ffffff;
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
 }
 
 /* HEADER */
@@ -18,10 +19,111 @@ header {
     top: 0;
     z-index: 1000;
 }
-.logo-small { height: 30px; width: auto; }
-nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 14px; text-transform: uppercase; }
 
-/* GRIGLIA PRODOTTI */
+.brand { display: flex; align-items: center; gap: 10px; }
+.logo-small { height: 30px; width: auto; }
+
+nav a { 
+    color: white; 
+    text-decoration: none; 
+    margin-left: 20px; 
+    font-size: 14px; 
+    text-transform: uppercase; 
+    cursor: pointer;
+}
+
+/* HERO SECTION (HOME) */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 5%;
+}
+
+.logo-main { 
+    max-width: 250px; 
+    margin-bottom: 40px; 
+}
+
+.hero h1 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    color: #ccc;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* SECOND SECTION (PRODUCT PREVIEW) */
+.product-preview {
+    padding: 100px 5%;
+    text-align: center;
+    background: #0a0a0a;
+}
+
+.label {
+    display: block;
+    letter-spacing: 5px;
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+/* BOTTONI */
+.btn-primary {
+    display: inline-block;
+    background-color: #fff;
+    color: #000;
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+/* POPUP */
+.popup {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #111;
+    padding: 50px;
+    border: 1px solid #222;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* GRIGLIA PRODOTTI (Per pagina prodotti.html) */
 .page-prodotti { padding: 100px 5% 50px; text-align: center; }
 .grid-prodotti {
     display: grid;
@@ -29,128 +131,4 @@ nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 14px;
     gap: 40px;
     max-width: 1200px;
     margin: 40px auto;
-}
-
-/* CARD FISSA (Per Totem e Portachiavi) */
-.card-p {
-    background: #0a0a0a;
-    border: 1px solid #1a1a1a;
-    padding: 25px;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.img-product { max-width: 100%; height: 200px; object-fit: contain; border-radius: 10px; }
-
-/* CARD 3D (Per Biglietto e Ciondolo) */
-.model-container {
-    width: 100%;
-    height: 250px;
-    perspective: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
-}
-.card-3d { width: 280px; height: 180px; cursor: pointer; position: relative; }
-.card-inner {
-    width: 100%; height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-}
-.card-3d.flip .card-inner { transform: rotateY(180deg); }
-.card-front, .card-back {
-    position: absolute; width: 100%; height: 100%;
-    backface-visibility: hidden; border-radius: 15px; overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-.card-back { transform: rotateY(180deg); }
-.card-front img, .card-back img { width: 100%; height: 100%; object-fit: cover; }
-
-/* INFO TESTI */
-.card-info h3 { margin: 15px 0 10px; letter-spacing: 2px; }
-.card-info p { color: #888; font-size: 14px; margin-bottom: 20px; }
-.btn-personalizza { border: 1px solid #fff; color: #fff; padding: 8px 18px; text-decoration: none; font-size: 12px; }
-/* STILE POPUP */
-.popup {
-    display: none; /* Inizialmente nascosti */
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    background-color: #111;
-    padding: 40px;
-    border: 1px solid #333;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 15px;
-    position: relative;
-    text-align: center;
-}
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #fff;
-}
-
-.about-text { line-height: 1.6; margin-bottom: 20px; }
-.quote { font-style: italic; color: #aaa; margin-top: 20px; }
-.author { margin-top: 10px; font-weight: 800; color: #fff; }
-/* --- AGGIUNGI QUESTO ALLA FINE DI STYLE.CSS --- */
-
-.hero {
-    padding: 100px 5%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.logo-main {
-    max-width: 300px;
-    margin-bottom: 30px;
-}
-
-.btn-primary {
-    display: inline-block;
-    background-color: #fff;
-    color: #000;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: 800;
-    margin-top: 20px;
-    border-radius: 5px;
-}
-
-/* Serve per nascondere i popup all'inizio */
-.popup {
-    display: none; 
-    position: fixed;
-    z-index: 2000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    background: #111;
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 500px;
-    position: relative;
 }
