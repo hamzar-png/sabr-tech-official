@@ -157,4 +157,8 @@ nav a {
         height: 25px;
     }
     h1 { font-size: 35px !important; letter-spacing: 5px !important; }
+/* Opzionale: rende le foto del ciondolo leggermente più rifinite */
+.card-p .card-front img, .card-p .card-back img {
+    border: 1px solid #222;
+}
 }
