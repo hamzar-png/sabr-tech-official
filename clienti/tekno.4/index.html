@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekno 4 | Digital Card</title>
+    
+    <link rel="icon" type="image/png" href="favicon_tekno4.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: white; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Sostituito con un link diretto funzionante (Metallo scuro) */
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95)), 
+                        url('https://images.unsplash.com/photo-1652715564391-38cc4475b7f5?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        .company-header {
+            margin-top: 50px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .company-logo {
+            height: 65px;
+            width: auto;
+            margin-bottom: 15px;
+            /* Leggero bagliore purple per richiamare il logo */
+            filter: drop-shadow(0 0 10px rgba(216, 27, 96, 0.3));
+        }
+
+        .company-header h1 {
+            font-size: 24px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #d81b60; /* IL PURPLE/MAGENTA DI TEKNO 4 */
+        }
+
+        .container { 
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .card-panel {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 12px;
+            /* Bordo sottile purple */
+            border: 1px solid rgba(216, 27, 96, 0.2);
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .panel-title { 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: #d81b60; /* Purple */
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .info-link { 
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .label { font-size: 8px; text-transform: uppercase; color: #555; margin-bottom: 4px; }
+        .value { font-size: 14px; font-weight: 400; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .small-box {
+            background: rgba(216, 27, 96, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(216, 27, 96, 0.1);
+        }
+
+        .final-actions { margin-top: 40px; text-align: center; }
+        
+        .btn-main {
+            display: inline-block;
+            /* Bottone Purple */
+            background: #d81b60;
+            color: white;
+            padding: 16px 35px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
+        }
+
+        .btn-sabr-brand { font-size: 9px; letter-spacing: 3px; color: #444; text-decoration: none; margin-top: 40px; display: block; }
+        .btn-sabr-brand span { color: #d81b60; }
+    </style>
+</head>
+<body>
+
+    <header class="company-header">
+        <img src="logo_tekno4.png" alt="Tekno 4" class="company-logo">
+        <h1>TEKNO 4</h1>
+    </header>
+
+    <div class="container">
+        
+        <div class="card-panel">
+            <p class="panel-title">Contatti Diretti</p>
+            
+            <a href="tel:+39073160102" class="info-link">
+                <span class="label">Telefono</span>
+                <span class="value">+39 0731 60102</span>
+            </a>
+
+            <a href="mailto:info@tekno4.it" class="info-link">
+                <span class="label">Email</span>
+                <span class="value">info@tekno4.it</span>
+            </a>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Tekno4+Viale+Caduti+sul+Lavoro+4+Monsano" target="_blank" class="info-link" style="margin-bottom: 0;">
+                <span class="label">Sede Operativa</span>
+                <span class="value">Viale Caduti sul Lavoro, 4<br>60030 Monsano (AN)</span>
+            </a>
+        </div>
+
+        <div class="contact-grid">
+            <div class="small-box">
+                <span class="label">Fax</span><br>
+                <span class="value">0731 696025</span>
+            </div>
+            <a href="mailto:info@pec.tekno4.it" class="small-box">
+                <span class="label">PEC</span><br>
+                <span class="value" style="font-size: 10px;">info@pec.tekno4.it</span>
+            </a>
+        </div>
+
+    </div>
+
+    <footer class="final-actions">
+        <a href="mailto:tuaemail@sabr-tech.it?subject=Richiesta MagTag - Tekno4" class="btn-main">
+            Attiva Servizio MagTag
+        </a>
+        <a href="https://sabr-tech.it" class="btn-sabr-brand">Powered by <span>SABR</span></a>
+    </footer>
+
+</body>
+</html>
