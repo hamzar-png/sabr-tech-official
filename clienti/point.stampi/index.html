@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Stampi | Eccellenza CNC | SABR</title>
+    
+    <link rel="icon" type="image/png" href="favicon_point.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: white; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: radial-gradient(circle at center, rgba(16, 33, 65, 0.8) 0%, rgba(5, 10, 20, 0.98) 100%), 
+                        url('https://images.unsplash.com/photo-1624841970647-87dce8628d72?q=80&w=1170&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        .company-header {
+            margin-top: 50px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .company-logo {
+            height: 70px; /* Regola l'altezza in base alle proporzioni del logo */
+            width: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.4));
+        }
+
+        .company-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+            border-bottom: 2px solid #0056b3;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .container { 
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .card-panel {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 150, 255, 0.2);
+            margin-bottom: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .panel-title { 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 9px; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            color: #00d4ff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .panel-title::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #00d4ff;
+            margin-right: 10px;
+            border-radius: 2px;
+            box-shadow: 0 0 10px #00d4ff;
+        }
+
+        .info-link { 
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: white;
+            margin-bottom: 22px;
+            transition: 0.3s;
+        }
+
+        .info-link:last-child { margin-bottom: 0; }
+        .info-link:hover { transform: translateX(5px); }
+
+        .label { font-size: 8px; text-transform: uppercase; color: #778da9; margin-bottom: 6px; font-weight: 700; }
+        .value { font-size: 15px; font-weight: 400; letter-spacing: 0.5px; }
+
+        .final-actions { margin-top: 30px; text-align: center; }
+        
+        .btn-main {
+            display: inline-block;
+            background: linear-gradient(90deg, #0056b3, #00d4ff);
+            color: #fff;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            transition: 0.4s;
+        }
+
+        .btn-main:hover {
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-sabr-brand { 
+            font-size: 9px; 
+            letter-spacing: 4px; 
+            color: #445; 
+            text-decoration: none; 
+            margin-top: 50px; 
+            display: block; 
+            text-transform: uppercase;
+        }
+        
+        .btn-sabr-brand span { color: #00d4ff; }
+    </style>
+</head>
+<body>
+
+    <header class="company-header">
+        <img src="logo_pointstampi.png" alt="Point Stampi Logo" class="company-logo">
+        <br>
+        <h1>POINT STAMPI</h1>
+    </header>
+
+    <div class="container">
+        
+        <div class="card-panel">
+            <p class="panel-title">CNC Precision Engineering</p>
+            
+            <a href="tel:+390731812660" class="info-link">
+                <span class="label">Main Line / Telefono</span>
+                <span class="value">+39 0731 812660</span>
+            </a>
+
+            <div class="info-link">
+                <span class="label">Fax Ufficio</span>
+                <span class="value">+39 0731 817547</span>
+            </div>
+
+            <a href="mailto:info@pointstampi.it" class="info-link">
+                <span class="label">Technical Department / Email</span>
+                <span class="value">info@pointstampi.it</span>
+            </a>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Point+Stampi+Via+G+Brodolini+37+Castelplanio" target="_blank" class="info-link">
+                <span class="label">Headquarters / Sede Operativa</span>
+                <span class="value">Via G. Brodolini, 37<br>60031 Castelplanio (AN)</span>
+            </a>
+        </div>
+
+    </div>
+
+    <footer class="final-actions">
+        <a href="mailto:hamza@sabrtech.it?subject=Richiesta MagTag - Point Stampi" class="btn-main">
+            Attiva Point MagTag
+        </a>
+        <a href="https://sabr-tech.it" class="btn-sabr-brand">Identity by <span>SABR</span></a>
+    </footer>
+
+</body>
+</html>
