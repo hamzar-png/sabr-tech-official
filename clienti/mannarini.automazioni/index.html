@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mannarini Automazioni | Digital Identity | SABR</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon_mannarini.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: white; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Sfondo con circuito tech e overlay scuro per leggibilità */
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        .company-header {
+            margin-top: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .company-logo {
+            height: 65px;
+            width: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 8px rgba(0, 170, 255, 0.3));
+        }
+
+        .company-header h1 {
+            font-size: 20px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #00aaff; /* Blu Mannarini */
+        }
+
+        .container { 
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .card-panel {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .panel-title { 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: #00aaff; 
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .info-link { 
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .label { font-size: 8px; text-transform: uppercase; color: #555; margin-bottom: 2px; }
+        .value { font-size: 13px; font-weight: 400; letter-spacing: 0.5px; }
+
+        /* Social links ordinati */
+        .social-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .social-btn {
+            flex: 1;
+            background: rgba(0, 170, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: #00aaff;
+            color: #000;
+        }
+
+        .final-actions { margin-top: 30px; text-align: center; }
+        
+        .btn-main {
+            display: inline-block;
+            background: #00aaff;
+            color: #000;
+            padding: 16px 40px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+        }
+
+        .btn-sabr-brand { 
+            font-size: 9px; 
+            letter-spacing: 3px; 
+            color: rgba(255,255,255,0.2); 
+            text-decoration: none; 
+            margin-top: 40px; 
+            display: block; 
+        }
+        .btn-sabr-brand span { color: #00aaff; }
+    </style>
+</head>
+<body>
+
+    <header class="company-header">
+        <img src="logo_mannarini.png" alt="Mannarini Automazioni" class="company-logo">
+        <h1>MANNARINI</h1>
+    </header>
+
+    <div class="container">
+        
+        <div class="card-panel">
+            <p class="panel-title">Contatti Aziendali</p>
+            
+            <a href="tel:+390731723183" class="info-link">
+                <span class="label">Telefono Centralino</span>
+                <span class="value">+39 0731 723 183</span>
+            </a>
+
+            <a href="mailto:info@mannariniautomazioni.com" class="info-link">
+                <span class="label">Email Ufficiale</span>
+                <span class="value">info@mannariniautomazioni.com</span>
+            </a>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Mannarini+Automazioni+Via+del+lavoro+18+Monte+Roberto" target="_blank" class="info-link" style="margin-bottom: 0;">
+                <span class="label">Sede e Stabilimento</span>
+                <span class="value">Via del lavoro, 18<br>60030 Monte Roberto (AN)</span>
+            </a>
+        </div>
+
+        <div class="social-row">
+            <a href="https://www.linkedin.com/company/mannarini-francesco-automazioni/" target="_blank" class="social-btn">LinkedIn</a>
+            <a href="https://www.youtube.com/@MannariniAutomazioni" target="_blank" class="social-btn">YouTube</a>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+             <a href="https://mannariniautomazioni.com/" target="_blank" style="text-decoration: none; color: #444; font-size: 11px; letter-spacing: 1px;">MANNARINIAUTOMAZIONI.COM</a>
+        </div>
+
+    </div>
+
+    <footer class="final-actions">
+        <a href="mailto:hamza@sabrtech.it?subject=Richiesta Attivazione MagTag - Mannarini&body=Buongiorno SabrTech, siamo interessati a saperne di più sui MagTag per la nostra azienda." class="btn-main">
+            Attiva Servizio MagTag
+        </a>
+        <a href="https://sabr-tech.it" class="btn-sabr-brand">Powered by <span>SABR</span></a>
+    </footer>
+
+</body>
+</html>
