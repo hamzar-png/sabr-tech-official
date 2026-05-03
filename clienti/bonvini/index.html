@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonvini Elettrogalvanica | Digital Identity | SABR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: white; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Sfondo che richiama superfici metalliche e riflessi galvanici */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        url('https://images.unsplash.com/photo-1495053960909-4366ce0bda4b?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        .company-header {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .company-logo {
+            height: 70px;
+            width: auto;
+            /* Effetto "zincato" al logo se carichi un'immagine scura */
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+        }
+
+        .company-header h1 {
+            font-size: 28px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #e0e0e0;
+        }
+
+        .panels-container { 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .card-panel {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-panel:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hq-panel {
+            grid-column: 1 / span 2;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .panel-name { font-size: 15px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; font-weight: 700; }
+        .panel-role { color: #00d4ff; /* Colore ciano che richiama i bagni galvanici/zinco */ font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
+
+        .info-item { 
+            margin-bottom: 12px; 
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-decoration: none;
+            color: #ddd;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-label { font-size: 8px; text-transform: uppercase; color: #666; margin-bottom: 3px; }
+
+        .final-actions { margin-top: 50px; text-align: center; width: 100%; }
+        
+        .btn-main {
+            display: inline-block;
+            background: linear-gradient(45deg, #00d4ff, #0056b3);
+            color: #fff;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-sabr-brand { font-size: 10px; letter-spacing: 4px; color: rgba(255,255,255,0.3); text-decoration: none; text-transform: uppercase; margin-top: 30px; display: block; }
+        .btn-sabr-brand span { color: #00d4ff; font-weight: 800; }
+
+        @media (max-width: 600px) {
+            .panels-container { grid-template-columns: 1fr; }
+            .hq-panel { grid-column: auto; }
+            .company-header h1 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="company-header">
+        <div class="logo-wrapper">
+            <!-- Usa un logo PNG trasparente se possibile -->
+            <img src="logo_bonvini.png" alt="Bonvini Elettrogalvanica" class="company-logo">
+            <h1>BONVINI</h1>
+            <p style="font-size: 10px; color: #888; letter-spacing: 2px;">ELETTROGALVANICA SRL</p>
+        </div>
+    </header>
+
+    <main class="panels-container">
+
+        <!-- Contatto Direzione -->
+        <div class="card-panel">
+            <h2 class="panel-name">DIREZIONE</h2>
+            <p class="panel-role">Management & Strategia</p>
+            <a href="tel:071 6620279" class="info-item">
+                <span class="info-label">Ufficio</span>
+                <span>071 6620279</span>
+            </a>
+            <a href="mailto:info@bonvinisrl.it" class="info-item">
+                <span class="info-label">Email</span>
+                <span>info@bonvinielettrogalvanica.it</span>
+            </a>
+        </div>
+
+        <!-- Servizi/Produzione -->
+        <div class="card-panel">
+            <h2 class="panel-name">PRODUZIONE</h2>
+            <p class="panel-role">Trattamenti Galvanici</p>
+            <a href="https://www.bonvinisrl.it" target="_blank" class="info-item">
+                <span class="info-label">Specializzazione</span>
+                <span>Zincatura</span>
+            </a>
+            <a href="https://www.bonvinisrl.it" target="_blank" class="info-item">
+                <span class="info-label">Sito Ufficiale</span>
+                <span>www.bonvinielettrogalvanica.it</span>
+            </a>
+        </div>
+
+        <!-- Sede Logistica -->
+        <div class="card-panel hq-panel">
+            <h2 class="panel-name" style="text-align: center; font-size: 12px; color: #00d4ff;">Sede Operativa</h2>
+            <div class="info-item" style="text-align: center; align-items: center; border: none;">
+                <span class="info-label">Indirizzo</span>
+                <span>S.p. Arceviese, 225
+60019 Senigallia (AN)</span>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="final-actions">
+    <!-- Questo link apre l'app email con oggetto e corpo già pronti -->
+    <a href="mailto:hamza@sabrtech.it?subject=Richiesta Attivazione MagTag - Bonvini Elettrogalvanica&body=Buongiorno SabrTech, ho testato il prototipo e sono interessato a ricevere maggiori informazioni per la mia azienda." class="btn-main">
+        Attiva Servizio MagTag
+    </a>
+    <br>
+    <a href="https://sabr-tech.it" class="btn-sabr-brand">
+        Powered by <span>SABR</span>
+    </a>
+</footer>
