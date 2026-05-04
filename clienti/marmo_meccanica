@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marmo Meccanica | World Leader | SABR</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: #1a1a1a; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* SFONDO: Texture Marmo Bianco Alta Risoluzione */
+            background: url('https://images.unsplash.com/photo-1588345921523-c2dcd57f7d62?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.2); /* Effetto lucido sopra il marmo */
+            z-index: -1;
+        }
+
+        .company-header {
+            margin-top: 50px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .company-logo {
+            max-width: 280px;
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+            margin-bottom: 10px;
+        }
+
+        .leader-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #b8860b; /* Oro brunito */
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .container { 
+            width: 100%;
+            max-width: 450px;
+            perspective: 1000px;
+        }
+
+        /* CARD EFFETTO LASTRA DI MARMO */
+        .marble-card {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 40px 30px;
+            border-radius: 2px;
+            border: 1px solid rgba(184, 134, 11, 0.3); /* Bordo oro sottile */
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .marble-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
+        }
+
+        .panel-title { 
+            font-family: 'Cinzel', serif;
+            font-size: 12px; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            color: #1a1a1a; 
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+
+        .info-group { margin-bottom: 25px; }
+
+        .info-link { 
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .info-link:hover { transform: translateX(8px); color: #b8860b; }
+
+        .icon-box {
+            width: 35px;
+            height: 35px;
+            background: #1a2a44; /* Blu scuro MarmoMeccanica */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            border-radius: 50%;
+            font-size: 14px;
+        }
+
+        .label { font-size: 9px; text-transform: uppercase; color: #888; font-weight: 700; letter-spacing: 1px; }
+        .value { font-size: 16px; font-weight: 400; font-family: 'Inter', sans-serif; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .dept-box {
+            background: rgba(26, 42, 68, 0.05);
+            padding: 20px;
+            border-left: 3px solid #1a2a44;
+            text-decoration: none;
+            color: #1a2a44;
+            transition: 0.3s;
+        }
+
+        .dept-box:hover { background: #1a2a44; color: white; }
+
+        .final-actions { margin-top: 40px; text-align: center; }
+        
+        .btn-gold {
+            display: inline-block;
+            background: #1a2a44;
+            color: white;
+            padding: 20px 50px;
+            border: 1px solid #b8860b;
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s;
+        }
+
+        .btn-gold:hover {
+            background: #b8860b;
+            color: white;
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.4);
+        }
+
+        .footer-logo {
+            margin-top: 50px;
+            font-size: 10px;
+            letter-spacing: 5px;
+            color: #888;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <header class="company-header">
+        <img src="logo_marmo.png" alt="Marmo Meccanica Logo" class="company-logo">
+        <p class="leader-badge">Precision Stone Technology</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="marble-card">
+            <p class="panel-title">Global Contact Hub</p>
+            
+            <div class="info-group">
+                <a href="tel:+39073160999" class="info-link">
+                    <div class="icon-box">T</div>
+                    <div>
+                        <p class="label">Switchboard</p>
+                        <p class="value">+39 0731 60999</p>
+                    </div>
+                </a>
+
+                <a href="mailto:info@marmomeccanica.com" class="info-link">
+                    <div class="icon-box">E</div>
+                    <div>
+                        <p class="label">General Inquiry</p>
+                        <p class="value">info@marmomeccanica.com</p>
+                    </div>
+                </a>
+
+                <a href="https://www.google.com/maps/search/?api=1&query=Marmo+Meccanica+Monsano" target="_blank" class="info-link">
+                    <div class="icon-box">A</div>
+                    <div>
+                        <p class="label">Italian Headquarters</p>
+                        <p class="value">Via S.Ubaldo, 20 - Monsano (AN)</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="contact-grid">
+                <a href="mailto:sales@marmomeccanica.com" class="dept-box">
+                    <p class="label">International Sales</p>
+                    <p class="value">sales@marmomeccanica.com</p>
+                </a>
+                <a href="mailto:service3@marmomeccanica.com" class="dept-box">
+                    <p class="label">Global Technical Service</p>
+                    <p class="value">service3@marmomeccanica.com</p>
+                </a>
+            </div>
+            
+            <div style="margin-top: 25px; border-top: 1px solid #eee; padding-top: 15px; text-align: center;">
+                 <p class="label">Fax Line</p>
+                 <p class="value" style="font-size: 12px;">+39 0731 605244</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="final-actions">
+        <a href="mailto:hamza@sabrtech.it?subject=MagTag Inquiry - Marmo Meccanica" class="btn-gold">
+            Request Business MagTag
+        </a>
+        <p class="footer-logo">Digital Identity by SABR</p>
+    </footer>
+
+</body>
+</html>
