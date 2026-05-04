@@ -231,10 +231,10 @@
 
     <footer class="final-actions">
         <a href="mailto:hamza@sabrtech.it?subject=MagTag Inquiry - Marmo Meccanica" class="btn-gold">
-            Request Business MagTag
-        </a>
-        <p class="footer-logo">Digital Identity by SABR</p>
-    </footer>
-
-</body>
-</html>
+            Attiva Servizio MagTag
+    </a>
+    <br>
+    <a href="https://sabr-tech.it" class="btn-sabr-brand">
+        Powered by <span>SABR</span>
+    </a>
+</footer>
