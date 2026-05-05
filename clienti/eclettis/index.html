@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECLETTIS | Private Digital Access</title>
+    <link rel="icon" type="image/png" href="favicon_eclettis.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --accent: #a1a1aa;
+            --glass-bg: rgba(0, 0, 0, 0.75);
+            --border: rgba(255, 255, 255, 0.25);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1667892702884-faa077e80d7b?q=80&w=880&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/brushed-alum.png');
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 450px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 50px 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+            border-radius: 2px;
+        }
+
+        .brand-name {
+            font-weight: 800;
+            letter-spacing: 12px;
+            font-size: 1.8rem;
+            margin-bottom: 45px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .direct-contacts {
+            text-align: left;
+            margin-bottom: 45px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .contact-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: block;
+            text-decoration: none;
+            color: var(--primary);
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-value:hover {
+            opacity: 0.7;
+        }
+
+        .btn-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: var(--primary);
+            border: 1px solid var(--border);
+            padding: 18px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .sabr-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .powered-link {
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.4s ease;
+        }
+
+        .powered {
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .powered-link:hover .powered {
+            letter-spacing: 8px;
+            text-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+
+        .location-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="brand-name">ECLETTIS</div>
+        
+        <div class="direct-contacts">
+            <span class="contact-label">Sede Centrale</span>
+            <!-- Link Google Maps -->
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Eclettis+Belvedere+Ostrense" class="contact-value" target="_blank">
+                Via Rosciano 1/A<br>Belvedere Ostrense (AN)
+            </a>
+            
+            <span class="contact-label">Linea Diretta</span>
+            <a href="tel:00390731217038" class="contact-value">T. 0731 217038</a>
+            
+            <span class="contact-label">Privileged Email</span>
+            <a href="mailto:info@eclettis.com" class="contact-value">info@eclettis.com</a>
+        </div>
+
+        <div class="btn-stack">
+            <a href="https://www.linkedin.com/company/fin-owner-srl-eclettis/" class="btn">LinkedIn</a>
+            <a href="https://www.facebook.com/eclettis/" class="btn">Facebook</a>
+            <a href="https://www.instagram.com/eclettis.official/" class="btn">Instagram</a>
+        </div>
+
+        <div class="sabr-footer">
+            <a href="https://sabrtech.it" class="powered-link" target="_blank">
+                <p class="powered">Powered by SABR</p>
+            </a>
+            <div class="location-label">Italy | Digital Partner</div>
+        </div>
+    </div>
+
+</body>
+</html>
