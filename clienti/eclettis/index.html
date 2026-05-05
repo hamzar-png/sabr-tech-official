@@ -10,8 +10,8 @@
         :root {
             --primary: #000000; /* Invertito a nero per contrasto su sfondo bianco */
             --accent: #52525b;
-            --glass-bg: rgba(255, 255, 255, 0.8);
-            --border: rgba(0, 0, 0, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(0, 0, 0, 0.08);
         }
 
         body, html {
@@ -44,13 +44,16 @@
         }
 
         .card {
+           position: relative;
+           z-index: 2;
             width: 90%;
             max-width: 450px;
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 50px 30px;
             border: 1px solid var(--border);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
             border-radius: 2px;
             color: var(--primary);
             text-align: center;
