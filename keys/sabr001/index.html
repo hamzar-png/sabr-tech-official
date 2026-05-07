@@ -1,37 +1,172 @@
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SABR - Recupero MagTag</title>
+    
+    <link rel="icon" type="image/png" href="../../favicon-sabr.png">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <style>
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #fff;
+            /* SFONDO TECH DA UNSPLASH */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1537420327992-d6e192287183?q=80&w=688&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container { 
+            max-width: 400px; 
+            width: 100%;
+            background: rgba(17, 17, 17, 0.85); 
+            padding: 40px 30px; 
+            border-radius: 30px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+        }
+
+        .logo { 
+            font-size: 32px; 
+            font-weight: 900; 
+            letter-spacing: 4px; 
+            margin-bottom: 5px; 
+            color: #fff;
+        }
+
+        .status-badge { 
+            display: inline-block; 
+            padding: 6px 16px; 
+            background: #ff4444; 
+            border-radius: 20px; 
+            font-size: 11px; 
+            margin-bottom: 25px; 
+            text-transform: uppercase; 
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        h2 { margin-bottom: 15px; font-size: 24px; font-weight: 700; }
+        p { color: #ccc; line-height: 1.6; margin-bottom: 30px; font-size: 15px; }
+
+        .btn { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 100%; 
+            padding: 18px; 
+            margin: 12px 0; 
+            border-radius: 16px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 16px; 
+            border: none; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
+        .btn:active { transform: scale(0.98); }
+
+        .btn-gps { background: #fff; color: #000; }
+        .btn-call { border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); color: #fff; }
+        
+        .footer-logo { margin-top: 30px; font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo">SABR</div>
+    <div class="status-badge">Oggetto Smarrito</div>
+    
+    <h2>Grazie dell'aiuto!</h2>
+    <p>Il proprietario è stato avvisato. Clicca il tasto bianco per inviargli la <strong>posizione esatta</strong> del ritrovamento.</p>
+
+    <button onclick="mandaGps()" class="btn btn-gps" id="mainBtn">📍 INVIA POSIZIONE ORA</button>
+    <a href="tel:+393516063107" class="btn btn-call">📞 CHIAMA PROPRIETARIO</a>
+    
+    <div class="footer-logo">sabrtech.it</div>
+</div>
 
 <script>
-// CONFIGURAZIONE EMAILJS
+// --- CONFIGURAZIONE EMAILJS ---
 (function() {
-    emailjs.init("TUA_PUBLIC_KEY"); // <--- METTI LA TUA PUBLIC KEY QUI
+    emailjs.init("tYRJ-S5V4IdwOt1ke"); // <--- Incolla qui la tua Public Key di EmailJS
 })();
 
-const SERVICE_ID = "service_a2iwppf";   // <--- METTI IL TUO SERVICE ID
-const TEMPLATE_ID = "service_a2iwppf"; // <--- METTI IL TUO TEMPLATE ID
+const SERVICE_ID = "service_a2iwppf";   // <--- Incolla qui il tuo Service ID
+const TEMPLATE_ID = "template_jmon2cm"; // <--- Incolla qui il tuo Template ID
 
+// --- DATI CLIENTE (CAMBIA QUESTI PER OGNI NUOVO TAG) ---
 const ID_TAG = "SABR001";
-const NOME_CLIENTE = "MARIO";
-const EMAIL_CLIENTE = "hamzarouias00@gmail.com"; // Email del cliente
-const EMAIL_SABR = "sabrtechkeys@gmail.com";   // Tua email per controllo
+const NOME_CLIENTE = "HAMZA";
+const EMAIL_CLIENTE = "hamzarouias00@gmail.com"; 
+const EMAIL_SABR = "sabrtechkeys@gmail.com";
 
+// 1. FUNZIONE UNICA INVIO EMAIL
 function inviaEmail(testoMessaggio) {
-    // INVIO AL CLIENTE
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-        to_email: EMAIL_CLIENTE,
+    const datiTemplate = {
+        id_tag: ID_TAG,
         nome: NOME_CLIENTE,
-        id_tag: ID_TAG,
         messaggio: testoMessaggio
-    });
+    };
 
-    // INVIO A TE (SABR)
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-        to_email: EMAIL_SABR,
-        nome: "ADMIN SABR",
-        id_tag: ID_TAG,
-        messaggio: testoMessaggio
-    });
+    // Invio al Cliente
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...datiTemplate, to_email: EMAIL_CLIENTE });
+
+    // Invio a te (SABR) per controllo
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...datiTemplate, to_email: EMAIL_SABR });
 }
 
-// ... Resto delle funzioni (window.onload e mandaGps) rimangono uguali, 
-// basta che chiamino inviaEmail() come facevano prima.
+// 2. ALERT SILENZIOSO ALL'APERTURA (IP)
+window.onload = function() {
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            inviaEmail("⚠️ Scansione rilevata. Zona IP approssimativa: " + data.city + " (" + data.region + "). In attesa di GPS preciso...");
+        })
+        .catch(() => inviaEmail("⚠️ Scansione rilevata (Dati IP non disponibili). In attesa di GPS..."));
+};
+
+// 3. FUNZIONE GPS PRECISO
+function mandaGps() {
+    const btn = document.getElementById('mainBtn');
+    btn.innerText = "Invio in corso...";
+    btn.disabled = true;
+    
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+            const mapsUrl = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+            inviaEmail("📍 POSIZIONE PRECISA RILEVATA! Visualizza sulla mappa: " + mapsUrl);
+            
+            btn.style.background = "#28a745";
+            btn.style.color = "#fff";
+            btn.innerText = "✅ POSIZIONE INVIATA";
+            alert("Grazie! La tua posizione è stata inviata al proprietario.");
+        }, err => {
+            alert("Per favore abilita il GPS per aiutare il proprietario.");
+            btn.innerText = "📍 RIPROVA INVIO";
+            btn.disabled = false;
+        }, { enableHighAccuracy: true });
+    }
+}
 </script>
+
+</body>
+</html>
