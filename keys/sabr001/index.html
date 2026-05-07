@@ -3,56 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SABR - MagTag</title>
+    <title>SABR MagTag - Recupero</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 30px; background: #000; color: #fff; }
-        .card { background: #1a1a1a; padding: 40px; border-radius: 30px; border: 1px solid #333; }
-        .btn { display: block; width: 100%; padding: 18px; margin: 15px 0; border-radius: 15px; text-decoration: none; font-weight: bold; font-size: 18px; transition: 0.3s; }
-        .btn-call { background: #fff; color: #000; }
-        .btn-gps { border: 2px solid #fff; color: #fff; }
-        .logo { font-size: 30px; letter-spacing: 3px; margin-bottom: 10px; }
+        body { font-family: sans-serif; text-align: center; padding: 40px; background: #000; color: #fff; }
+        .box { border: 1px solid #333; padding: 20px; border-radius: 20px; background: #111; }
+        .btn { display: block; width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 18px; cursor: pointer; border: none; }
+        .btn-call { background: #28a745; color: white; }
+        .btn-gps { background: #007bff; color: white; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <div class="logo">SABR</div>
+<div class="box">
+    <h1>SABR MagTag</h1>
     <p>Hai trovato le chiavi di <strong>MARIO</strong></p>
-    
-    <!-- CHIAMA -->
-    <a href="tel:+393331234567" class="btn btn-call">CHIAMA ORA</a>
 
-    <!-- MANDA POSIZIONE -->
-    <button onclick="mandaPosizione()" class="btn btn-gps" id="btnGps">INVIA POSIZIONE GPS</button>
+    <a href="tel:+393331234567" class="btn btn-call">CHIAMA IL PROPRIETARIO</a>
+
+    <button onclick="mandaGps()" class="btn btn-gps">INVIA POSIZIONE PRECISA</button>
 </div>
 
 <script>
-// 1. LOCALIZZAZIONE IP AUTOMATICA AL CARICAMENTO
+// 1. APPENA SI APRE LA PAGINA, AVVISA IL PROPRIETARIO (ZONA IP)
 window.onload = function() {
     fetch('https://ipapi.co/json/')
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
-            const info = `Tag SABR001 scansionato a ${data.city}, ${data.region} (IP: ${data.ip})`;
-            inviaNotifica(info); // Funzione per inviarti l'email
+            inviaEmail("⚠️ Scansione MagTag SABR001! Zona approssimativa: " + data.city + ", " + data.country_name);
         });
 };
 
-function inviaNotifica(messaggio) {
-    // Qui userai un servizio come Formspree.io (gratis)
-    // Basta creare un account e ti daranno un link dove inviare i dati
-    fetch("https://formspree.io/f/TUO_CODICE_DALLO_SCRIPT", {
-        method: "POST",
-        body: JSON.stringify({ message: messaggio }),
-        headers: { 'Accept': 'application/json' }
+// 2. FUNZIONE PER INVIARE L'EMAIL (USA IL CODICE DI WEB3FORMS)
+function inviaEmail(messaggio) {
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            access_key: '663fdbd0-d3c1-4cb2-af29-6f5fcca7abeb', 
+            subject: 'Notifica MagTag SABR',
+            from_name: 'SABR System',
+            message: messaggio
+        })
     });
 }
 
-function mandaPosizione() {
+// 3. FUNZIONE PER IL GPS PRECISO
+function mandaGps() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-            const link = `https://www.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}`;
-            inviaNotifica("POSIZIONE ESATTA RILEVATA: " + link);
-            alert("Posizione inviata al proprietario!");
+        navigator.geolocation.getCurrentPosition(pos => {
+            const link = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+            inviaEmail("📍 POSIZIONE PRECISA RILEVATA: " + link);
+            alert("Posizione inviata al proprietario! Grazie per l'aiuto.");
         });
     }
 }
