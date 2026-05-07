@@ -22,7 +22,6 @@
             justify-content: center;
             min-height: 100vh;
             color: #fff;
-            /* SFONDO TECH DA UNSPLASH */
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                         url('https://images.unsplash.com/photo-1537420327992-d6e192287183?q=80&w=688&auto=format&fit=crop');
             background-size: cover;
@@ -113,13 +112,13 @@
 const SERVICE_ID = "service_a2iwppf";
 const TEMPLATE_ID = "template_jmon2cm";
 
-// --- DATI CLIENTE (CAMBIA QUESTI PER OGNI NUOVO TAG) ---
+// --- DATI CLIENTE ---
 const ID_TAG = "SABR001";
 const NOME_CLIENTE = "HAMZA";
 const EMAIL_CLIENTE = "hamzarouias00@gmail.com"; 
 const EMAIL_SABR = "sabrtechkeys@gmail.com";
 
-// 1. FUNZIONE DOPPIO INVIO (SABR + CLIENTE)
+// 1. FUNZIONE UNICA INVIO EMAIL
 function inviaEmail(testoMessaggio) {
     const datiBase = {
         id_tag: ID_TAG,
@@ -127,36 +126,32 @@ function inviaEmail(testoMessaggio) {
         messaggio: testoMessaggio
     };
 
-    // Invio A: SABR (Notifica amministratore)
+    // Invio A: SABR
     emailjs.send(SERVICE_ID, TEMPLATE_ID, {
         ...datiBase,
         to_email: EMAIL_SABR 
     });
 
-    // Invio B: CLIENTE (Dopo 1 secondo di ritardo per sicurezza)
+    // Invio B: CLIENTE
     setTimeout(() => {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, {
             ...datiBase,
             to_email: EMAIL_CLIENTE 
-        }).then(() => {
-            console.log("Email inviata correttamente a: " + EMAIL_CLIENTE);
-        }).catch((err) => {
-            console.error("Errore invio cliente:", err);
         });
     }, 1000);
 }
 
-// 2. ALERT SILENZIOSO ALL'APERTURA (IP)
+// 2. ALERT SILENZIOSO ALL'APERTURA
 window.onload = function() {
     fetch('https://ipapi.co/json/')
         .then(res => res.json())
         .then(data => {
-            inviaEmail("⚠️ Scansione rilevata. Zona IP approssimativa: " + data.city + " (" + data.region + "). In attesa di GPS preciso...");
+            inviaEmail("⚠️ Scansione rilevata. Zona IP approssimativa: " + data.city + " (" + data.region + ").");
         })
         .catch(() => inviaEmail("⚠️ Scansione rilevata (Dati IP non disponibili)."));
 };
 
-// 3. FUNZIONE GPS PRECISO (VERSIONE RINFORZATA)
+// 3. FUNZIONE GPS PRECISO
 function mandaGps() {
     const btn = document.getElementById('mainBtn');
     btn.innerText = "Invio in corso...";
@@ -167,11 +162,10 @@ function mandaGps() {
             var lat = pos.coords.latitude;
             var lon = pos.coords.longitude;
             
-            // Usiamo un formato link più semplice e universale
+            // URL Google Maps Corretto
             var mapsUrl = "https://www.google.com/maps?q=" + lat + "," + lon;
             var messaggioFinale = "📍 POSIZIONE PRECISA RILEVATA PER " + ID_TAG + "!\nVisualizza sulla mappa: " + mapsUrl;
             
-            // Forza l'invio del nuovo messaggio
             inviaEmail(messaggioFinale);
             
             btn.style.background = "#28a745";
@@ -179,20 +173,14 @@ function mandaGps() {
             btn.innerText = "✅ POSIZIONE INVIATA";
             alert("Grazie! La tua posizione è stata inviata al proprietario.");
         }, function(err) {
-            console.error(err);
-            alert("Errore: per favore abilita il GPS nelle impostazioni del telefono.");
+            alert("Errore: abilita il GPS per inviare la posizione.");
             btn.innerText = "📍 RIPROVA INVIO";
             btn.disabled = false;
-        }, { 
-            enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 0 
-        });
+        }, { enableHighAccuracy: true, timeout: 10000 });
     } else {
         alert("Il tuo browser non supporta il GPS.");
     }
 }
-}    
 </script>
 
 </body>
