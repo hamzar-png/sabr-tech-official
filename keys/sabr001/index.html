@@ -87,6 +87,15 @@
         
         .footer-logo { margin-top: 30px; font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 2px; }
     </style>
+    .footer-logo a {
+    color: #666; /* Colore grigio come prima */
+    text-decoration: none; /* Rimuove la sottolineatura brutta */
+    transition: color 0.3s;
+}
+
+.footer-logo a:hover {
+    color: #fff; /* Diventa bianco quando ci passi sopra con il mouse */
+}
 </head>
 <body>
 
@@ -100,7 +109,8 @@
     <button onclick="mandaGps()" class="btn btn-gps" id="mainBtn">📍 INVIA POSIZIONE ORA</button>
     <a href="tel:+393516063107" class="btn btn-call">📞 CHIAMA PROPRIETARIO</a>
     
-    <div class="footer-logo">sabrtech.it</div>
+    <div class="footer-logo">
+    <a href="https://sabrtech.it" target="_blank">sabrtech.it</a>
 </div>
 
 <script>
