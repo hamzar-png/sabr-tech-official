@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SABR - MagTag</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 30px; background: #000; color: #fff; }
+        .card { background: #1a1a1a; padding: 40px; border-radius: 30px; border: 1px solid #333; }
+        .btn { display: block; width: 100%; padding: 18px; margin: 15px 0; border-radius: 15px; text-decoration: none; font-weight: bold; font-size: 18px; transition: 0.3s; }
+        .btn-call { background: #fff; color: #000; }
+        .btn-gps { border: 2px solid #fff; color: #fff; }
+        .logo { font-size: 30px; letter-spacing: 3px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="logo">SABR</div>
+    <p>Hai trovato le chiavi di <strong>MARIO</strong></p>
+    
+    <!-- CHIAMA -->
+    <a href="tel:+393331234567" class="btn btn-call">CHIAMA ORA</a>
+
+    <!-- MANDA POSIZIONE -->
+    <button onclick="mandaPosizione()" class="btn btn-gps" id="btnGps">INVIA POSIZIONE GPS</button>
+</div>
+
+<script>
+// 1. LOCALIZZAZIONE IP AUTOMATICA AL CARICAMENTO
+window.onload = function() {
+    fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+            const info = `Tag SABR001 scansionato a ${data.city}, ${data.region} (IP: ${data.ip})`;
+            inviaNotifica(info); // Funzione per inviarti l'email
+        });
+};
+
+function inviaNotifica(messaggio) {
+    // Qui userai un servizio come Formspree.io (gratis)
+    // Basta creare un account e ti daranno un link dove inviare i dati
+    fetch("https://formspree.io/f/TUO_CODICE_DALLO_SCRIPT", {
+        method: "POST",
+        body: JSON.stringify({ message: messaggio }),
+        headers: { 'Accept': 'application/json' }
+    });
+}
+
+function mandaPosizione() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const link = `https://www.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}`;
+            inviaNotifica("POSIZIONE ESATTA RILEVATA: " + link);
+            alert("Posizione inviata al proprietario!");
+        });
+    }
+}
+</script>
+
+</body>
+</html>
