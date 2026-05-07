@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SABR Pet ID | Aiutami a tornare a casa</title>
+    
+    <link rel="icon" type="image/png" href="../../favicon-sabr.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: white; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* SFONDO: Un prato verde rilassante per amanti degli animali */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=2071&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        .pet-header {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .pet-header h1 {
+            font-size: 45px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #FFD700; 
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .pet-header p {
+            font-size: 14px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: #ff4444;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+        }
+
+        .panels-container { 
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .card-panel {
+            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .owner-info {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            border-left: 3px solid #FFD700;
+            padding-left: 15px;
+        }
+
+        .info-label { font-size: 10px; text-transform: uppercase; color: #FFD700; font-weight: 800; }
+        .info-value { font-size: 17px; font-weight: 600; color: #fff; }
+
+        /* PULSANTI */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            border-radius: 20px;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-gps { background: #fff; color: #000; }
+        .btn-call { background: #28a745; color: white; }
+        
+        .btn:hover { transform: scale(1.02); }
+
+        .footer { margin-top: 20px; font-size: 10px; opacity: 0.6; }
+        .footer a { color: white; text-decoration: none; font-weight: 800; }
+    </style>
+</head>
+<body>
+
+    <header class="pet-header">
+        <p>🐾 MI SONO PERSO</p>
+        <h1>BUDDY</h1> 
+    </header>
+
+    <main class="panels-container">
+        <div class="card-panel">
+            <h2 style="font-size: 18px; margin-bottom: 10px;">Aiutami a tornare a casa!</h2>
+            <p style="font-size: 14px; color: #ccc; margin-bottom: 20px;">Il mio proprietario è preoccupato. Per favore, usa i tasti qui sotto.</p>
+
+            <button onclick="mandaGps()" class="btn btn-gps" id="gpsBtn">📍 INVIA LA MIA POSIZIONE</button>
+            <a href="tel:3331234567" class="btn btn-call">📞 CHIAMA PROPRIETARIO</a>
+
+            <div class="owner-info">
+                <div class="info-item">
+                    <div class="info-label">Proprietario</div>
+                    <div class="info-value">Mario Rossi</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Indirizzo</div>
+                    <div class="info-value">Via Roma 12, Milano (MI)</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <a href="https://sabrtech.it">POWERED BY <span>SABR</span></a>
+    </footer>
+
+<script>
+// --- CONFIGURAZIONE EMAILJS ---
+(function() { emailjs.init("tYRJ-S5V4IdwOt1ke"); })();
+const SERVICE_ID = "service_a2iwppf";
+const TEMPLATE_ID = "template_jmon2cm";
+
+// --- DATI ANIMALE/CLIENTE ---
+const ID_TAG = "PET-BUDDY-001";
+const NOME_CLIENTE = "MARIO ROSSI";
+const EMAIL_CLIENTE = "hamzarouias00@gmail.com"; 
+const EMAIL_SABR = "sabrtechkeys@gmail.com";
+
+function inviaEmail(testo) {
+    const params = { id_tag: ID_TAG, nome: NOME_CLIENTE, messaggio: testo };
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_SABR });
+    setTimeout(() => {
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_CLIENTE });
+    }, 1000);
+}
+
+// ALERT SILENZIOSO ALL'APERTURA
+window.onload = function() {
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            inviaEmail("🐕 NOTIFICA PET: Il ciondolo di BUDDY è stato scansionato vicino a " + data.city + ". Qualcuno sta visualizzando i tuoi contatti.");
+        });
+};
+
+// FUNZIONE GPS
+function mandaGps() {
+    const btn = document.getElementById('gpsBtn');
+    btn.innerText = "Invio in corso...";
+    btn.disabled = true;
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            var mapsUrl = "https://www.google.com/maps?q=" + pos.coords.latitude + "," + pos.coords.longitude;
+            inviaEmail("📍 POSIZIONE ESATTA DI BUDDY: " + mapsUrl);
+            btn.style.background = "#28a745";
+            btn.style.color = "#fff";
+            btn.innerText = "✅ POSIZIONE INVIATA";
+            alert("Grazie! La tua posizione è stata inviata al proprietario.");
+        }, function() {
+            alert("Per favore abilita il GPS.");
+            btn.disabled = false;
+            btn.innerText = "📍 RIPROVA INVIO";
+        }, { enableHighAccuracy: true });
+    }
+}
+</script>
+
+</body>
+</html>
