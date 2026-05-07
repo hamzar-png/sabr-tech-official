@@ -3,103 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SABR | MagTag</title>
+    <title>SABR - Recupero MagTag</title>
+    
+    <link rel="icon" type="image/png" href="../../favicon-sabr.png">
 
-    <link rel="icon" type="image/png" href="favicon-sabr.png">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * { box-sizing: border-box; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #fff;
+            /* SFONDO DA UNSPLASH (Tech/Dark/Geometric) */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1557683304-673a23048d34?q=80&w=564&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&family=Jost:wght@400;800&display=swap" rel="stylesheet">
+        .container { 
+            max-width: 400px; 
+            width: 100%;
+            background: rgba(17, 17, 17, 0.85); /* Leggermente trasparente per far vedere lo sfondo */
+            padding: 40px 30px; 
+            border-radius: 30px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            backdrop-filter: blur(10px); /* Effetto vetro sfocato */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+        }
+
+        .logo { 
+            font-size: 32px; 
+            font-weight: 900; 
+            letter-spacing: 4px; 
+            margin-bottom: 5px; 
+            color: #fff;
+        }
+
+        .status-badge { 
+            display: inline-block; 
+            padding: 6px 16px; 
+            background: #ff4444; 
+            border-radius: 20px; 
+            font-size: 11px; 
+            margin-bottom: 25px; 
+            text-transform: uppercase; 
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        h2 { margin-bottom: 15px; font-size: 24px; font-weight: 700; }
+        p { color: #ccc; line-height: 1.6; margin-bottom: 30px; font-size: 15px; }
+
+        .btn { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 100%; 
+            padding: 18px; 
+            margin: 12px 0; 
+            border-radius: 16px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 16px; 
+            border: none; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
+        .btn:active { transform: scale(0.98); }
+
+        .btn-gps { background: #fff; color: #000; }
+        .btn-call { border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); color: #fff; }
+        
+        .footer-logo { margin-top: 30px; font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 2px; }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <div class="brand">
-        <img src="sabr-piccolo.jpg" class="logo-small">
-        <span>SABR</span>
-    </div>
+<div class="container">
+    <div class="logo">SABR</div>
+    <div class="status-badge">Oggetto Smarrito</div>
+    
+    <h2>Grazie dell'aiuto!</h2>
+    <p>Il proprietario è stato avvisato. Clicca il tasto bianco per inviargli la <strong>posizione esatta</strong> del ritrovamento.</p>
 
-    <nav>
-        <a onclick="openPopup('chiSiamoPopup')">Chi siamo</a>
-        <a href="prodotti.html">MagTag</a>
-        <a onclick="openPopup('contattiPopup')">Contatti</a>
-    </nav>
-</header>
-
-<main>
-
-<section class="hero">
-    <img src="sabr.jpg" class="logo-main">
-
-    <h1 style="font-size:40px; letter-spacing:5px;">
-        Fatti trovare. Ottieni clienti. Con un tap.
-    </h1>
-
-    <p style="max-width:600px;">
-        MagTag è il sistema che collega il mondo fisico e digitale. 
-        Condividi contatti, ottieni recensioni e semplifica ogni interazione.
-    </p>
-
-    <a href="prodotti.html" class="btn-primary">Scopri MagTag</a>
-</section>
-
-<section class="product-preview">
-    <div class="container">
-        <span class="label">MAGTAG</span>
-        <h1>Un sistema. Infiniti utilizzi.</h1>
-
-        <p>
-            Usa MagTag per networking, recensioni, social o sicurezza personale.
-            Una sola tecnologia, infinite possibilità.
-        </p>
-
-        <a href="prodotti.html" class="btn-primary">Vedi prodotti</a>
-    </div>
-</section>
-
-</main>
-
-<!-- POPUP CHI SIAMO -->
-<div id="chiSiamoPopup" class="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup('chiSiamoPopup')">&times;</span>
-
-    <h2>Chi siamo</h2>
-
-    <p class="about-text">
-      Siamo una startup tech che trasforma oggetti semplici in esperienze intelligenti.<br>
-      Il nostro obiettivo è rendere la tecnologia invisibile, naturale, immediata.
-    </p>
-
-    <p class="quote">
-      “Il compito non è vedere ciò che nessuno ha mai visto,<br>
-      ma pensare ciò che nessuno ha mai pensato<br>
-      su ciò che tutti vedono.”
-    </p>
-
-    <p class="author">— Arthur Schopenhauer</p>
-
-  </div>
+    <button onclick="mandaGps()" class="btn btn-gps" id="mainBtn">📍 INVIA POSIZIONE ORA</button>
+    <a href="tel:+393331234567" class="btn btn-call">📞 CHIAMA PROPRIETARIO</a>
+    
+    <div class="footer-logo">sabrtech.it</div>
 </div>
 
-<!-- POPUP CONTATTI -->
-<div id="contattiPopup" class="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup('contattiPopup')">&times;</span>
+<script>
+const ACCESS_KEY = "663fdbd0-d3c1-4cb2-af29-6f5fcca7abeb";
+const ID_TAG = "SABR001"; 
+const NOME_PROPRIETARIO = "MARIO"; 
 
-    <h2>Contatti</h2>
+// ALERT SILENZIOSO
+window.onload = function() {
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            inviaEmail("⚠️ MagTag " + ID_TAG + " (" + NOME_PROPRIETARIO + ") scansionato.\nCittà: " + data.city + "\nAttesa GPS preciso...");
+        });
+};
 
-    <p>Per collaborazioni o informazioni:</p>
+function inviaEmail(messaggio) {
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            access_key: ACCESS_KEY,
+            subject: "AVVISO SABR - " + ID_TAG,
+            message: messaggio
+        })
+    });
+}
 
-    <a href="mailto:hamza@sabr-tech.it" style="color:white; display:block; margin-top:20px;">
-      hamza@sabrtech.it
-    </a>
-
-  </div>
-</div>
-
-<!-- SCRIPT -->
-<script src="script.js"></script>
+function mandaGps() {
+    const btn = document.getElementById('mainBtn');
+    btn.innerText = "Invio in corso...";
+    btn.disabled = true;
+    
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+            const mapsUrl = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+            inviaEmail("📍 POSIZIONE PRECISA RILEVATA!\nVisualizza: " + mapsUrl);
+            btn.style.background = "#28a745";
+            btn.style.color = "#fff";
+            btn.innerText = "✅ POSIZIONE INVIATA";
+            alert("Grazie! Posizione inviata con successo.");
+        }, err => {
+            alert("Abilita il GPS per la precisione massima.");
+            btn.innerText = "📍 RIPROVA INVIO";
+            btn.disabled = false;
+        }, { enableHighAccuracy: true });
+    }
+}
+</script>
 
 </body>
 </html>
