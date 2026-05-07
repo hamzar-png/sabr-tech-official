@@ -156,31 +156,43 @@ window.onload = function() {
         .catch(() => inviaEmail("⚠️ Scansione rilevata (Dati IP non disponibili)."));
 };
 
-// 3. FUNZIONE GPS PRECISO
+// 3. FUNZIONE GPS PRECISO (VERSIONE RINFORZATA)
 function mandaGps() {
     const btn = document.getElementById('mainBtn');
     btn.innerText = "Invio in corso...";
     btn.disabled = true;
     
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => {
-            const lat = pos.coords.latitude;
-            const lon = pos.coords.longitude;
-            const mapsUrl = `https://www.google.com/maps?q=${lat},${lon}`;
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            var lat = pos.coords.latitude;
+            var lon = pos.coords.longitude;
             
-            inviaEmail("📍 POSIZIONE PRECISA RILEVATA! Visualizza sulla mappa: " + mapsUrl);
+            // Usiamo un formato link più semplice e universale
+            var mapsUrl = "https://www.google.com/maps?q=" + lat + "," + lon;
+            var messaggioFinale = "📍 POSIZIONE PRECISA RILEVATA PER " + ID_TAG + "!\nVisualizza sulla mappa: " + mapsUrl;
+            
+            // Forza l'invio del nuovo messaggio
+            inviaEmail(messaggioFinale);
             
             btn.style.background = "#28a745";
             btn.style.color = "#fff";
             btn.innerText = "✅ POSIZIONE INVIATA";
             alert("Grazie! La tua posizione è stata inviata al proprietario.");
-        }, err => {
-            alert("Per favore abilita il GPS per aiutare il proprietario.");
+        }, function(err) {
+            console.error(err);
+            alert("Errore: per favore abilita il GPS nelle impostazioni del telefono.");
             btn.innerText = "📍 RIPROVA INVIO";
             btn.disabled = false;
-        }, { enableHighAccuracy: true });
+        }, { 
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0 
+        });
+    } else {
+        alert("Il tuo browser non supporta il GPS.");
     }
 }
+}    
 </script>
 
 </body>
