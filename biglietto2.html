@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Business Card | SABR</title>
+
+<script 
+  src="https://www.paypal.com/sdk/js?client-id=BAA0ZRw_cFHV3nSzYdvvgEBm_KEcjwmrnIjcJFHKgUD8O1w1PKlUCmGOF1SprtlAtKy_bxTldY4gVDR4M4&components=hosted-buttons&disable-funding=venmo&currency=EUR">
+</script> 
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0f0f0f;
+    color: white;
+}
+
+header {
+    padding: 20px;
+}
+
+header a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+main {
+    padding: 40px;
+    text-align: center;
+}
+
+/* ===== CARD 3D ===== */
+.card-3d {
+    width: 340px; /* Ridotto leggermente per migliorare la visualizzazione mobile */
+    height: 200px;
+    margin: 40px auto;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-3d.flip .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.card-front img,
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+/* TESTO */
+.hero-text {
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* PREZZI */
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.price-card {
+    background: #1a1a1a;
+    padding: 30px;
+    width: 280px; /* Allargato leggermente per i nuovi testi */
+    border-radius: 16px;
+    text-align: left;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+}
+
+.price {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.price-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.price-card li {
+    margin-bottom: 12px;
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Spunta verde per i dettagli */
+.price-card li::before {
+    content: "✓ ";
+    color: #00ff88;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.featured {
+    background: white;
+    color: black;
+    box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+}
+
+.featured li {
+    color: #333;
+}
+
+.featured li::before {
+    color: #00aa55;
+}
+
+.badge {
+    background: black;
+    color: white;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-transform: uppercase;
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+/* STILE BOTTONE PERSONALIZZATO */
+.btn {
+    display: block;
+    text-align: center;
+    background: white;
+    color: black;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 15px;
+    border: 1px solid white;
+}
+
+.btn:hover {
+    background: transparent;
+    color: white;
+}
+
+.featured .btn {
+    background: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.featured .btn:hover {
+    background: transparent;
+    color: black;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="prodotti.html">← Torna ai prodotti</a>
+</header>
+
+<main>
+
+<!-- CARD 3D -->
+<p style="color:#aaa; font-size: 14px;">Tocca o passa sopra la card per vedere il retro</p>
+
+<div class="card-3d" onclick="this.classList.toggle('flip')">
+    <div class="card-inner">
+        <!-- FRONTE -->
+        <div class="card-front">
+            <img src="biglietto-fronte.jpg" alt="Fronte Biglietto">
+        </div>
+        <!-- RETRO -->
+        <div class="card-back">
+            <img src="biglietto-retro.jpg" alt="Retro Biglietto">
+        </div>
+    </div>
+</div>
+
+<!-- TESTO -->
+<div class="hero-text">
+<h1>Non lasciare un contatto. Lascia un'impressione.</h1>
+<p>
+MagTag trasforma il tuo primo incontro in qualcosa che resta.  
+Un gesto semplice — un tap — e tutte le tue informazioni arrivano in modo immediato, elegante, memorabile sul telefono del tuo cliente.  
+Per chi non vuole essere uno dei tanti, ma quello che viene ricordato.
+</p>
+</div>
+
+<!-- PREZZI -->
+<h2 style="margin-bottom:20px;">Scegli il tuo livello</h2>
+
+<div class="pricing-grid">
+
+    <!-- STARTER -->
+    <div class="price-card">
+        <div>
+            <h3>Starter</h3>
+            <p class="price">49€</p>
+            <ul>
+                <li><strong>1 MagTag Card</strong> esclusiva</li>
+                <li>Carta artistica ad alto spessore</li>
+                <li>Chip NFC invisibile integrato</li>
+                <li>Design e Logo su misura</li>
+                <li>Pagina profilo web personalizzata</li>
+            </ul>
+        </div>
+        <div>
+            <div id="paypal-container-SBSGAZ8ZMWWWU"></div>
+            <script>
+              paypal.HostedButtons({
+                hostedButtonId: "SBSGAZ8ZMWWWU"
+              }).render("#paypal-container-SBSGAZ8ZMWWWU");
+            </script>
+        </div>
+    </div>
+
+    <!-- PRO (FEATURED) -->
+    <div class="price-card featured">
+        <div>
+            <span class="badge">Più scelto</span>
+            <h3>Pro Portfolio</h3>
+            <p class="price">119€</p>
+            <ul>
+                <li><strong>3 MagTag Card</strong> (Giacca / Ufficio / Scorta)</li>
+                <li>Carta artistica ad alto spessore</li>
+                <li>Chip NFC invisibile integrato</li>
+                <li>Design e Logo su misura</li>
+                <li>Pagina profilo web personalizzata</li>
+                <li><strong>Aggiornamenti dati gratis</strong> per sempre</li>
+            </ul>
+        </div>
+        <div>
+            <div id="paypal-container-QAHM58MEEX4JJ"></div>
+            <script>
+              paypal.HostedButtons({
+                hostedButtonId: "QAHM58MEEX4JJ"
+              }).render("#paypal-container-QAHM58MEEX4JJ");
+            </script>
+        </div>
+    </div>
+
+    <!-- TEAM -->
+    <div class="price-card">
+        <div>
+            <h3>Team / Studio</h3>
+            <p class="price" style="font-size: 26px;">Su Misura</p>
+            <ul>
+                <li><strong>10+ Card</strong> per tutto il team</li>
+                <li>Stile coordinato per lo studio</li>
+                <li>Pagine web dedicate per ogni membro</li>
+                <li>Pannello di gestione contatti</li>
+                <li>Supporto diretto Whatsapp/Mail</li>
+            </ul>
+        </div>
+        <div>
+            <a class="btn" style="background:#222; color:white; border:1px solid #333;"
+               href="mailto:hamza@sabr-tech.it?subject=Preventivo%20MagTag%20Team&body=Nome:%0A%0AAzienda:%0A%0ANumero%20card:%0A%0A">
+                Richiedi Preventivo
+            </a>
+        </div>
+    </div>
+
+</div>
+
+</main>
+
+</body>
+</html>
