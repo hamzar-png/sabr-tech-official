@@ -114,7 +114,7 @@
 
     <header class="pet-header">
         <p>🐾 MI SONO PERSO</p>
-        <h1>BUDDY</h1> 
+        <h1>VIOLA</h1> 
     </header>
 
     <main class="panels-container">
@@ -123,16 +123,16 @@
             <p style="font-size: 14px; color: #ccc; margin-bottom: 20px;">Il mio proprietario è preoccupato. Per favore, usa i tasti qui sotto.</p>
 
             <button onclick="mandaGps()" class="btn btn-gps" id="gpsBtn">📍 INVIA LA MIA POSIZIONE</button>
-            <a href="tel:3331234567" class="btn btn-call">📞 CHIAMA PROPRIETARIO</a>
+            <a href="tel:3913700848" class="btn btn-call">📞 CHIAMA PROPRIETARIO</a>
 
             <div class="owner-info">
                 <div class="info-item">
                     <div class="info-label">Proprietario</div>
-                    <div class="info-value">Mario Rossi</div>
+                    <div class="info-value">Alessandro Cicconimassi</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">Indirizzo</div>
-                    <div class="info-value">Via Roma 12, Milano (MI)</div>
+                    <div class="info-value">Via Mandriola 123 b , Senigallia (AN)</div>
                 </div>
             </div>
         </div>
@@ -149,9 +149,9 @@ const SERVICE_ID = "service_a2iwppf";
 const TEMPLATE_ID = "template_jmon2cm";
 
 // --- DATI ANIMALE/CLIENTE ---
-const ID_TAG = "PET-BUDDY-001";
-const NOME_CLIENTE = "MARIO ROSSI";
-const EMAIL_CLIENTE = "hamzarouias00@gmail.com"; 
+const ID_TAG = "PET-VIOLA-001";
+const NOME_CLIENTE = "Alessandro Cicconimassi";
+const EMAIL_CLIENTE = "hamzarouias00gmail.com"; 
 const EMAIL_SABR = "sabrtechkeys@gmail.com";
 
 function inviaEmail(testo) {
@@ -167,7 +167,7 @@ window.onload = function() {
     fetch('https://ipapi.co/json/')
         .then(res => res.json())
         .then(data => {
-            inviaEmail("🐕 NOTIFICA PET: Il ciondolo di BUDDY è stato scansionato vicino a " + data.city + ". Qualcuno sta visualizzando i tuoi contatti.");
+            inviaEmail("🐕 NOTIFICA PET: Il ciondolo di Viola è stato scansionato vicino a " + data.city + ". Qualcuno sta visualizzando i tuoi contatti.");
         });
 };
 
@@ -180,7 +180,7 @@ function mandaGps() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos) {
             var mapsUrl = "https://www.google.com/maps?q=" + pos.coords.latitude + "," + pos.coords.longitude;
-            inviaEmail("📍 POSIZIONE ESATTA DI BUDDY: " + mapsUrl);
+            inviaEmail("📍 POSIZIONE ESATTA DI VIOLA: " + mapsUrl);
             btn.style.background = "#28a745";
             btn.style.color = "#fff";
             btn.innerText = "✅ POSIZIONE INVIATA";
