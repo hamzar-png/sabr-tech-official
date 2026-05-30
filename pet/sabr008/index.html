@@ -21,7 +21,7 @@
             align-items: center;
             /* SFONDO: Un prato verde rilassante per amanti degli animali */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://plus.unsplash.com/premium_photo-1661962728716-c44d0dc9d653?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                        url('https://plus.unsplash.com/premium_photo-1661962728716-c44d0dc9d653?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -143,35 +143,51 @@
     </footer>
 
 <script>
-// --- CONFIGURAZIONE EMAILJS ---
-(function() { emailjs.init("tYRJ-S5V4IdwOt1ke"); })();
-const SERVICE_ID = "service_a2iwppf";
-const TEMPLATE_ID = "template_jmon2cm";
+// --- CONFIGURAZIONE EMAILJS AGGIORNATA ---
+(function() { emailjs.init("FIbAY1fAaCfoe6hoL"); })();
+const SERVICE_ID = "service_rsjtlzp";
+const TEMPLATE_ID = "template_20xptx6";
 
-// --- DATI ANIMALE/CLIENTE ---
+// --- DATI ANIMALE/CLIENTE AGGIORNATI ---
 const ID_TAG = "PET-VIOLA-001";
 const NOME_CLIENTE = "Alessandro Cicconimassi";
 const EMAIL_CLIENTE = "alessandro.cicconimassi@gmail.com"; 
-const EMAIL_SABR = "sabrtechkeys@gmail.com";
+const EMAIL_SABR = "financialmask@gmail.com"; // La tua nuova email di controllo
 
 function inviaEmail(testo) {
     const params = { id_tag: ID_TAG, nome: NOME_CLIENTE, messaggio: testo };
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_SABR });
+    
+    // Primo invio a te (SABR)
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_SABR })
+        .then(() => console.log("Email inviata con successo a te"))
+        .catch(err => console.error("Errore invio tua email:", err));
+
+    // Secondo invio ad Alessandro (Cliente)
     setTimeout(() => {
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_CLIENTE });
-    }, 1000);
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_CLIENTE })
+            .then(() => console.log("Email inviata con successo ad Alessandro"))
+            .catch(err => console.error("Errore invio email cliente:", err));
+    }, 1200);
 }
 
-// ALERT SILENZIOSO ALL'APERTURA
+// ALERT SILENZIOSO ALL'APERTURA (CON CONTROLLO ERRORI PER COPERTURA LIMITI)
 window.onload = function() {
     fetch('https://ipapi.co/json/')
-        .then(res => res.json())
+        .then(res => {
+            if(!res.ok) throw new Error("Limite API IP raggiunto");
+            return res.json();
+        })
         .then(data => {
-            inviaEmail("🐕 NOTIFICA PET: Il ciondolo di Viola è stato scansionato vicino a " + data.city + ". Qualcuno sta visualizzando i tuoi contatti.");
+            let localita = data.city ? data.city : "posizione stimata";
+            inviaEmail("🐕 NOTIFICA PET: Il ciondolo di Viola è stato scansionato vicino a " + localita + ". Qualcuno sta visualizzando i tuoi contatti.");
+        })
+        .catch(err => {
+            console.log("Uso notifica generica a causa di un blocco API IP:", err.message);
+            inviaEmail("🐕 NOTIFICA PET: Il ciondolo di Viola è stato scansionato! Qualcuno sta visualizzando i tuoi contatti.");
         });
 };
 
-// FUNZIONE GPS
+// FUNZIONE GPS CORRETTA
 function mandaGps() {
     const btn = document.getElementById('gpsBtn');
     btn.innerText = "Invio in corso...";
@@ -179,17 +195,23 @@ function mandaGps() {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos) {
+            // Sistemato il link di Google Maps
             var mapsUrl = "https://www.google.com/maps?q=" + pos.coords.latitude + "," + pos.coords.longitude;
             inviaEmail("📍 POSIZIONE ESATTA DI VIOLA: " + mapsUrl);
             btn.style.background = "#28a745";
             btn.style.color = "#fff";
             btn.innerText = "✅ POSIZIONE INVIATA";
             alert("Grazie! La tua posizione è stata inviata al proprietario.");
-        }, function() {
-            alert("Per favore abilita il GPS.");
+        }, function(error) {
+            alert("Per favore abilita il GPS per poter inviare la tua posizione esatta.");
             btn.disabled = false;
             btn.innerText = "📍 RIPROVA INVIO";
+            console.error(error);
         }, { enableHighAccuracy: true });
+    } else {
+        alert("Geolocalizzazione non supportata da questo browser.");
+        btn.disabled = false;
+        btn.innerText = "📍 RIPROVA INVIO";
     }
 }
 </script>
