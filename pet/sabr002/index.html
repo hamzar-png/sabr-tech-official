@@ -143,35 +143,51 @@
     </footer>
 
 <script>
-// --- CONFIGURAZIONE EMAILJS ---
-(function() { emailjs.init("tYRJ-S5V4IdwOt1ke"); })();
-const SERVICE_ID = "service_a2iwppf";
-const TEMPLATE_ID = "template_jmon2cm";
+// --- CONFIGURAZIONE EMAILJS NUOVA ---
+(function() { emailjs.init("FIbAY1fAaCfoe6hoL"); })();
+const SERVICE_ID = "service_rsjtlzp";
+const TEMPLATE_ID = "template_20xptx6";
 
-// --- DATI ANIMALE/CLIENTE ---
+// --- DATI ANIMALE/CLIENTE AGGIORNATI ---
 const ID_TAG = "PET-JENNY-002";
 const NOME_CLIENTE = "LUIGI MUROLO";
 const EMAIL_CLIENTE = "murolo.luigi@tiscali.it"; 
-const EMAIL_SABR = "sabrtechkeys@gmail.com";
+const EMAIL_SABR = "financialmask@gmail.com"; // La tua email di controllo SABR
 
 function inviaEmail(testo) {
     const params = { id_tag: ID_TAG, nome: NOME_CLIENTE, messaggio: testo };
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_SABR });
+    
+    // Primo invio a te (SABR)
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_SABR })
+        .then(() => console.log("Email inviata con successo a te"))
+        .catch(err => console.error("Errore invio tua email:", err));
+
+    // Secondo invio a Luigi (Cliente)
     setTimeout(() => {
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_CLIENTE });
-    }, 1000);
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_CLIENTE })
+            .then(() => console.log("Email inviata con successo a Luigi"))
+            .catch(err => console.error("Errore invio email cliente:", err));
+    }, 1200);
 }
 
-// ALERT SILENZIOSO ALL'APERTURA
+// ALERT SILENZIOSO ALL'APERTURA (CON CONTROLLO ERRORI PER COPERTURA LIMITI)
 window.onload = function() {
     fetch('https://ipapi.co/json/')
-        .then(res => res.json())
+        .then(res => {
+            if(!res.ok) throw new Error("Limite API IP raggiunto");
+            return res.json();
+        })
         .then(data => {
-            inviaEmail("🐈‍⬛ NOTIFICA PET: Il ciondolo di JENNY è stato scansionato vicino a " + data.city + ". Qualcuno sta visualizzando i tuoi contatti.");
+            let localita = data.city ? data.city : "posizione stimata";
+            inviaEmail("🐈‍⬛ NOTIFICA PET: Il ciondolo di JENNY è stato scansionato vicino a " + localita + ". Qualcuno sta visualizzando i tuoi contatti.");
+        })
+        .catch(err => {
+            console.log("Uso notifica generica a causa di un blocco API IP:", err.message);
+            inviaEmail("🐈‍⬛ NOTIFICA PET: Il ciondolo di JENNY è stato scansionato! Qualcuno sta visualizzando i tuoi contatti.");
         });
 };
 
-// FUNZIONE GPS
+// FUNZIONE GPS CORRETTA
 function mandaGps() {
     const btn = document.getElementById('gpsBtn');
     btn.innerText = "Invio in corso...";
@@ -179,17 +195,23 @@ function mandaGps() {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos) {
+            // Sistemato il link di Google Maps
             var mapsUrl = "https://www.google.com/maps?q=" + pos.coords.latitude + "," + pos.coords.longitude;
             inviaEmail("📍 POSIZIONE ESATTA DI JENNY: " + mapsUrl);
             btn.style.background = "#28a745";
             btn.style.color = "#fff";
             btn.innerText = "✅ POSIZIONE INVIATA";
             alert("Grazie! La tua posizione è stata inviata al proprietario.");
-        }, function() {
-            alert("Per favore abilita il GPS.");
+        }, function(error) {
+            alert("Per favore abilita il GPS per poter inviare la tua posizione esatta.");
             btn.disabled = false;
             btn.innerText = "📍 RIPROVA INVIO";
+            console.error(error);
         }, { enableHighAccuracy: true });
+    } else {
+        alert("Geolocalizzazione non supportata da questo browser.");
+        btn.disabled = false;
+        btn.innerText = "📍 RIPROVA INVIO";
     }
 }
 </script>
