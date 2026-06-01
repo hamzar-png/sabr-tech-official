@@ -171,7 +171,17 @@ function inviaEmail(testo) {
 
 // ALERT SILENZIOSO ALL'APERTURA
 window.onload = function() {
-   
+    fetch('https://ipapi.co/json/')
+        .then(res => {
+            if(!res.ok) throw new Error("Limite API IP raggiunto");
+            return res.json();
+        })
+        .then(data => {
+            let localita = data.city ? data.city : "posizione stimata";
+            inviaEmail("🐕 NOTIFICA PET: Il ciondolo di BUDDY è stato scansionato vicino a " + localita + ". Qualcuno sta visualizzando i tuoi contatti.");
+        })
+        .catch(err => {
+            console.log("Uso notifica generica a causa di un blocco API IP:", err.message);
             inviaEmail("🐕 NOTIFICA PET: Il ciondolo di BUDDY è stato scansionato! Qualcuno sta visualizzando i tuoi contatti.");
         });
 };
