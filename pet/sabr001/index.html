@@ -19,7 +19,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* SFONDO: Un prato verde rilassante per amanti degli animali */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
@@ -140,19 +139,19 @@
 
     <footer class="footer">
         <a href="https://sabrtech.it">POWERED BY <span>SABR</span></a>
-    </footer>
+    </footer >
 
 <script>
 // --- CONFIGURAZIONE EMAILJS NUOVA ---
-(function() { emailjs.init("FIbAY1fAaCfoe6hoL"); })(); // <-- La tua nuova chiave account
-const SERVICE_ID = "service_rsjtlzp";                 // <-- Il tuo nuovo Service ID
-const TEMPLATE_ID = "template_20xptx6";               // <-- Il tuo nuovo Template ID
+(function() { emailjs.init("FIbAY1fAaCfoe6hoL"); })();
+const SERVICE_ID = "service_rsjtlzp";                  
+const TEMPLATE_ID = "template_20xptx6";               
 
 // --- DATI ANIMALE/CLIENTE AGGIORNATI ---
-const ID_TAG = "PET-ragazze-001";                       // <-- L'ID del ciondolo
-const NOME_CLIENTE = "ragazze";                   // <-- Il nome del padrone
-const EMAIL_CLIENTE = "hamzarouias00@gmail.com";       // <-- L'email del padrone
-const EMAIL_SABR = "financialmask@gmail.com";         // <-- La TUA email dove ricevi le notifiche di controllo
+const ID_TAG = "PET-ragazze-001";                       
+const NOME_CLIENTE = "ragazze";                   
+const EMAIL_CLIENTE = "hamzarouias00@gmail.com";       
+const EMAIL_SABR = "financialmask@gmail.com";         
 
 function inviaEmail(testo) {
     const params = { id_tag: ID_TAG, nome: NOME_CLIENTE, messaggio: testo };
@@ -162,7 +161,7 @@ function inviaEmail(testo) {
         .then(() => console.log("Email inviata con successo a SABR"))
         .catch(err => console.error("Errore invio SABR:", err));
 
-    // Secondo invio al Cliente (ritardato di 1.2 secondi per evitare sovrapposizioni)
+    // Secondo invio al Cliente
     setTimeout(() => {
         emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...params, to_email: EMAIL_CLIENTE })
             .then(() => console.log("Email inviata con successo al Cliente"))
@@ -170,7 +169,7 @@ function inviaEmail(testo) {
     }, 1200);
 }
 
-// ALERT SILENZIOSO ALL'APERTURA (CON CONTROLLO ERRORI)
+// ALERT SILENZIOSO ALL'APERTURA
 window.onload = function() {
     fetch('https://ipapi.co/json/')
         .then(res => {
@@ -182,13 +181,12 @@ window.onload = function() {
             inviaEmail("🐕 NOTIFICA PET: Il ciondolo di BUDDY è stato scansionato vicino a " + localita + ". Qualcuno sta visualizzando i tuoi contatti.");
         })
         .catch(err => {
-            // Se l'API dell'IP fallisce o finisce i crediti, l'email parte comunque in modalità generica
             console.log("Uso notifica generica a causa di un blocco API IP:", err.message);
             inviaEmail("🐕 NOTIFICA PET: Il ciondolo di BUDDY è stato scansionato! Qualcuno sta visualizzando i tuoi contatti.");
         });
 };
 
-// FUNZIONE GPS CORRETTA
+// FUNZIONE GPS STRUTTURATA E CORRETTA
 function mandaGps() {
     const btn = document.getElementById('gpsBtn');
     btn.innerText = "Invio in corso...";
@@ -196,9 +194,10 @@ function mandaGps() {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos) {
-            // Corretto il link di Google Maps che aveva un errore di battitura
+            // URL ufficiale e pulito per generare il punto esatto su Google Maps
             var mapsUrl = "https://www.google.com/maps?q=" + pos.coords.latitude + "," + pos.coords.longitude;
             inviaEmail("📍 POSIZIONE ESATTA DI BUDDY: " + mapsUrl);
+            
             btn.style.background = "#28a745";
             btn.style.color = "#fff";
             btn.innerText = "✅ POSIZIONE INVIATA";
