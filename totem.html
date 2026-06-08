@@ -1,154 +1,316 @@
-<h2 style="margin-bottom:40px;">Scegli il tuo pacchetto</h2>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Totem Recensioni | SABR</title>
+<script src="https://www.paypal.com/sdk/js?client-id=BAA0ZRw_cFHV3nSzYdvvgEBm_KEcjwmrnIjcJFHKgUD8O1w1PKlUCmGOF1SprtlAtKy_bxTldY4gVDR4M4&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
+<style>
 
-<div class="pricing-grid">
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0f0f0f;
+    color: white;
+}
 
-    <!-- TOTEM PERSONALIZZATO -->
-    <div class="price-card featured">
-        <span class="badge">Totem Personalizzato</span>
+header {
+    padding: 20px;
+}
 
-        <h3>1 Pezzo</h3>
-        <p class="price">40€</p>
+header a {
+    color: #aaa;
+    text-decoration: none;
+}
 
-        <ul>
-            <li>1 Totem personalizzato</li>
-            <li>Grafica dedicata</li>
-            <li>NFC integrato</li>
-        </ul>
+main {
+    padding: 40px;
+    text-align: center;
+}
 
-        <div id="paypal-pro-1"></div>
-        <script>
-        paypal.HostedButtons({
-            hostedButtonId: "ID_PAYPAL_PRO_1"
-        }).render("#paypal-pro-1");
-        </script>
+/* IMMAGINE */
+.product-img {
+    width: 380px;
+    margin: 40px auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* TESTO HERO */
+.hero-text {
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* PACCHETTI */
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.price-card {
+    background: #1a1a1a;
+    padding: 30px;
+    width: 260px;
+    border-radius: 16px;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+}
+
+.price-card h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.price-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.price-card li {
+    margin-bottom: 10px;
+    color: #bbb;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* CARD IN EVIDENZA (SFONDO BIANCO) */
+.featured {
+    background: white;
+    color: black;
+}
+
+.featured .btn {
+    background: black;
+    color: white;
+}
+
+.featured li {
+    color: #444; /* Testo più scuro per essere leggibile su sfondo bianco */
+}
+
+.badge {
+    background: #000;
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Fix per badge dentro la card bianca */
+.featured .badge {
+    background: #e0e0e0;
+    color: #000;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <a href="prodotti.html">← Torna ai prodotti</a>
+</header>
+
+<main>
+
+    <img src="totem-personalizzato.jpg" class="product-img">
+
+    <div class="hero-text">
+        <h1>Trasforma ogni cliente in una recensione.</h1>
+        <p>
+            La maggior parte dei clienti soddisfatti non lascia recensioni.<br>
+            Non perché non vogliono — ma perché è scomodo.<br><br>
+            MagTag elimina ogni frizione.<br>
+            Un semplice tap, e il cliente è già sulla pagina per recensirti.<br><br>
+            Più recensioni, più fiducia, più clienti.
+        </p>
     </div>
 
-    <div class="price-card">
-        <h3>5 Pezzi</h3>
-        <p class="price">30€/cad</p>
-
-        <ul>
-            <li>Totale ordine: 150€</li>
-            <li>Totem personalizzati</li>
-            <li>Risparmio quantità</li>
-        </ul>
-
-        <div id="paypal-pro-5"></div>
-        <script>
-        paypal.HostedButtons({
-            hostedButtonId: "ID_PAYPAL_PRO_5"
-        }).render("#paypal-pro-5");
-        </script>
+    <h2 style="margin-top:60px; margin-bottom:30px;">Scegli il tuo Totem</h2>
+    <div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-bottom: 60px;">
+        <div style="text-align:center;">
+            <img src="totem-lite.jpg" style="width:260px; border-radius:12px;">
+            <h3 style="margin-top:15px;">Totem Lite</h3>
+            <p style="color:#aaa;">Semplice, efficace, pronto all'uso</p>
+        </div>
+        <div style="text-align:center;">
+            <img src="totem-personalizzato.jpg" style="width:260px; border-radius:12px;">
+            <h3 style="margin-top:15px;">Totem Pro</h3>
+            <p style="color:#aaa;">Personalizzato per il tuo locale</p>
+        </div>
     </div>
 
-    <div class="price-card">
-        <h3>10 Pezzi</h3>
-        <p class="price">25€/cad</p>
 
-        <ul>
-            <li>Totale ordine: 250€</li>
-            <li>Prezzo migliore</li>
-            <li>Produzione dedicata</li>
-        </ul>
+    <h2 style="margin-bottom:40px;">Scegli il tuo pacchetto - Totem Personalizzato</h2>
+    
+    <div class="pricing-grid">
 
-        <div id="paypal-pro-10"></div>
-        <script>
-        paypal.HostedButtons({
-            hostedButtonId: "ID_PAYPAL_PRO_10"
-        }).render("#paypal-pro-10");
-        </script>
+        <div class="price-card featured">
+            <span class="badge">Totem Personalizzato</span>
+            <h3>1 Pezzo</h3>
+            <p class="price">40€</p>
+            <ul>
+                <li>1 Totem personalizzato</li>
+                <li>Grafica dedicata</li>
+                <li>NFC integrato</li>
+            </ul>
+            <div id="paypal-pro-1"></div>
+            <script>
+            paypal.HostedButtons({
+                hostedButtonId: "ID_PAYPAL_PRO_1"
+            }).render("#paypal-pro-1");
+            </script>
+        </div>
+
+        <div class="price-card">
+            <h3>5 Pezzi</h3>
+            <p class="price">30€/cad</p>
+            <ul>
+                <li>Totale ordine: 150€</li>
+                <li>Totem personalizzati</li>
+                <li>Risparmio quantità</li>
+            </ul>
+            <div id="paypal-pro-5"></div>
+            <script>
+            paypal.HostedButtons({
+                hostedButtonId: "ID_PAYPAL_PRO_5"
+            }).render("#paypal-pro-5");
+            </script>
+        </div>
+
+        <div class="price-card">
+            <h3>10 Pezzi</h3>
+            <p class="price">25€/cad</p>
+            <ul>
+                <li>Totale ordine: 250€</li>
+                <li>Prezzo migliore</li>
+                <li>Produzione dedicata</li>
+            </ul>
+            <div id="paypal-pro-10"></div>
+            <script>
+            paypal.HostedButtons({
+                hostedButtonId: "ID_PAYPAL_PRO_10"
+            }).render("#paypal-pro-10");
+            </script>
+        </div>
+
+        <div class="price-card">
+            <h3>+10 Pezzi</h3>
+            <p class="price">Preventivo</p>
+            <ul>
+                <li>Ordini personalizzati</li>
+                <li>Prezzi dedicati</li>
+                <li>Supporto diretto</li>
+            </ul>
+            <a href="mailto:hamza@sabrtech.it">
+                <button class="btn">Contattaci</button>
+            </a>
+        </div>
+
     </div>
 
-    <div class="price-card">
-        <h3>+10 Pezzi</h3>
-        <p class="price">Preventivo</p>
 
-        <ul>
-            <li>Ordini personalizzati</li>
-            <li>Prezzi dedicati</li>
-            <li>Supporto diretto</li>
-        </ul>
+    <h2 style="margin-bottom:40px; margin-top:60px;">Totem Lite Start</h2>
 
-        <a href="mailto:hamza@sabrtech.it">
-            <button class="btn">Contattaci</button>
-        </a>
-    </div>
+    <div class="pricing-grid">
 
-</div>
+        <div class="price-card">
+            <h3>1 Pezzo</h3>
+            <p class="price">30€</p>
+            <ul>
+                <li>1 Totem Lite</li>
+                <li>NFC integrato</li>
+                <li>Pronto all'uso</li>
+            </ul>
+            <div id="paypal-lite-1"></div>
+            <script>
+            paypal.HostedButtons({
+                hostedButtonId: "ID_PAYPAL_LITE_1"
+            }).render("#paypal-lite-1");
+            </script>
+        </div>
 
-<br><br><br>
+        <div class="price-card">
+            <h3>5 Pezzi</h3>
+            <p class="price">20€/cad</p>
+            <ul>
+                <li>Totale ordine: 100€</li>
+                <li>Prezzo quantità</li>
+                <li>Pronti all'uso</li>
+            </ul>
+            <div id="paypal-lite-5"></div>
+            <script>
+            paypal.HostedButtons({
+                hostedButtonId: "ID_PAYPAL_LITE_5"
+            }).render("#paypal-lite-5");
+            </script>
+        </div>
 
-<h2 style="margin-bottom:40px;">Totem Lite Start</h2>
+        <div class="price-card">
+            <h3>10 Pezzi</h3>
+            <p class="price">15€/cad</p>
+            <ul>
+                <li>Totale ordine: 150€</li>
+                <li>Miglior prezzo</li>
+                <li>Ideale per catene</li>
+            </ul>
+            <div id="paypal-lite-10"></div>
+            <script>
+            paypal.HostedButtons({
+                hostedButtonId: "ID_PAYPAL_LITE_10"
+            }).render("#paypal-lite-10");
+            </script>
+        </div>
 
-<div class="pricing-grid">
+        <div class="price-card">
+            <h3>+10 Pezzi</h3>
+            <p class="price">Preventivo</p>
+            <ul>
+                <li>Ordini grandi quantità</li>
+                <li>Prezzi personalizzati</li>
+                <li>Supporto diretto</li>
+            </ul>
+            <a href="mailto:hamza@sabrtech.it">
+                <button class="btn">Contattaci</button>
+            </a>
+        </div>
 
-    <div class="price-card">
-        <h3>1 Pezzo</h3>
-        <p class="price">30€</p>
+    </div> 
 
-        <ul>
-            <li>1 Totem Lite</li>
-            <li>NFC integrato</li>
-            <li>Pronto all'uso</li>
-        </ul>
+</main>
 
-        <div id="paypal-lite-1"></div>
-        <script>
-        paypal.HostedButtons({
-            hostedButtonId: "ID_PAYPAL_LITE_1"
-        }).render("#paypal-lite-1");
-        </script>
-    </div>
-
-    <div class="price-card">
-        <h3>5 Pezzi</h3>
-        <p class="price">20€/cad</p>
-
-        <ul>
-            <li>Totale ordine: 100€</li>
-            <li>Prezzo quantità</li>
-            <li>Pronti all'uso</li>
-        </ul>
-
-        <div id="paypal-lite-5"></div>
-        <script>
-        paypal.HostedButtons({
-            hostedButtonId: "ID_PAYPAL_LITE_5"
-        }).render("#paypal-lite-5");
-        </script>
-    </div>
-
-    <div class="price-card">
-        <h3>10 Pezzi</h3>
-        <p class="price">15€/cad</p>
-
-        <ul>
-            <li>Totale ordine: 150€</li>
-            <li>Miglior prezzo</li>
-            <li>Ideale per catene</li>
-        </ul>
-
-        <div id="paypal-lite-10"></div>
-        <script>
-        paypal.HostedButtons({
-            hostedButtonId: "ID_PAYPAL_LITE_10"
-        }).render("#paypal-lite-10");
-        </script>
-    </div>
-
-    <div class="price-card">
-        <h3>+10 Pezzi</h3>
-        <p class="price">Preventivo</p>
-
-        <ul>
-            <li>Ordini grandi quantità</li>
-            <li>Prezzi personalizzati</li>
-            <li>Supporto diretto</li>
-        </ul>
-
-        <a href="mailto:hamza@sabrtech.it">
-            <button class="btn">Contattaci</button>
-        </a>
-    </div>
-
-</div>
+</body>
+</html>
