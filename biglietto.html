@@ -33,7 +33,7 @@ main {
 
 /* ===== CARD 3D ===== */
 .card-3d {
-    width: 340px; /* Ridotto leggermente per migliorare la visualizzazione mobile */
+    width: 340px; 
     height: 200px;
     margin: 40px auto;
     perspective: 1000px;
@@ -103,7 +103,7 @@ main {
 .price-card {
     background: #1a1a1a;
     padding: 30px;
-    width: 280px; /* Allargato leggermente per i nuovi testi */
+    width: 280px; 
     border-radius: 16px;
     text-align: left;
     transition: 0.3s;
@@ -114,6 +114,11 @@ main {
 
 .price-card:hover {
     transform: translateY(-5px);
+}
+
+.price-card h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .price {
@@ -169,6 +174,12 @@ main {
     margin-bottom: 10px;
 }
 
+/* Fix per badge dentro la card bianca */
+.featured .badge {
+    background: #e0e0e0;
+    color: #000;
+}
+
 /* STILE BOTTONE PERSONALIZZATO */
 .btn {
     display: block;
@@ -182,6 +193,7 @@ main {
     transition: 0.3s;
     font-size: 15px;
     border: 1px solid white;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -211,23 +223,19 @@ main {
 
 <main>
 
-<!-- CARD 3D -->
 <p style="color:#aaa; font-size: 14px;">Tocca o passa sopra la card per vedere il retro</p>
 
 <div class="card-3d" onclick="this.classList.toggle('flip')">
     <div class="card-inner">
-        <!-- FRONTE -->
         <div class="card-front">
             <img src="biglietto-fronte.jpg" alt="Fronte Biglietto">
         </div>
-        <!-- RETRO -->
         <div class="card-back">
             <img src="biglietto-retro.jpg" alt="Retro Biglietto">
         </div>
     </div>
 </div>
 
-<!-- TESTO -->
 <div class="hero-text">
 <h1>Non lasciare un contatto. Lascia un'impressione.</h1>
 <p>
@@ -237,76 +245,112 @@ Per chi non vuole essere uno dei tanti, ma quello che viene ricordato.
 </p>
 </div>
 
-<!-- PREZZI -->
-<h2 style="margin-bottom:20px;">Scegli il tuo livello</h2>
+<h2 style="margin-bottom:20px;">Scegli il tuo pacchetto</h2>
 
 <div class="pricing-grid">
 
-    <!-- STARTER -->
     <div class="price-card">
         <div>
-            <h3>Starter</h3>
-            <p class="price">49€</p>
+            <h3>1 Pezzo</h3>
+            <p class="price">5€</p>
             <ul>
-                <li><strong>1 MagTag Card</strong> esclusiva</li>
-                <li>Carta artistica ad alto spessore</li>
+                <li><strong>1 MagTag Card</strong></li>
                 <li>Chip NFC invisibile integrato</li>
                 <li>Design e Logo su misura</li>
-                <li>Pagina profilo web personalizzata</li>
+                <li>Profilo web personalizzato</li>
             </ul>
         </div>
         <div>
-            <div id="paypal-container-SBSGAZ8ZMWWWU"></div>
+            <div id="paypal-card-1"></div>
             <script>
               paypal.HostedButtons({
-                hostedButtonId: "SBSGAZ8ZMWWWU"
-              }).render("#paypal-container-SBSGAZ8ZMWWWU");
+                hostedButtonId: "ID_PAYPAL_CARD_1"
+              }).render("#paypal-card-1");
             </script>
         </div>
     </div>
 
-    <!-- PRO (FEATURED) -->
+    <div class="price-card">
+        <div>
+            <h3>10 Pezzi</h3>
+            <p class="price">4€<span style="font-size:16px; font-weight:normal;">/cad</span></p>
+            <ul>
+                <li>Totale ordine: 40€</li>
+                <li>Chip NFC invisibile integrato</li>
+                <li>Stile coordinato per il team</li>
+                <li>Profilo web per ogni card</li>
+            </ul>
+        </div>
+        <div>
+            <div id="paypal-card-10"></div>
+            <script>
+              paypal.HostedButtons({
+                hostedButtonId: "ID_PAYPAL_CARD_10"
+              }).render("#paypal-card-10");
+            </script>
+        </div>
+    </div>
+
     <div class="price-card featured">
         <div>
             <span class="badge">Più scelto</span>
-            <h3>Pro Portfolio</h3>
-            <p class="price">119€</p>
+            <h3>50 Pezzi</h3>
+            <p class="price">2€<span style="font-size:16px; font-weight:normal;">/cad</span></p>
             <ul>
-                <li><strong>3 MagTag Card</strong> (Giacca / Ufficio / Scorta)</li>
-                <li>Carta artistica ad alto spessore</li>
+                <li>Totale ordine: 100€</li>
                 <li>Chip NFC invisibile integrato</li>
-                <li>Design e Logo su misura</li>
-                <li>Pagina profilo web personalizzata</li>
-                <li><strong>Aggiornamenti dati gratis</strong> per sempre</li>
+                <li>Risparmio quantità ottimale</li>
+                <li>Profilo web per ogni card</li>
+                <li>Aggiornamento dati incluso</li>
             </ul>
         </div>
         <div>
-            <div id="paypal-container-QAHM58MEEX4JJ"></div>
+            <div id="paypal-card-50"></div>
             <script>
               paypal.HostedButtons({
-                hostedButtonId: "QAHM58MEEX4JJ"
-              }).render("#paypal-container-QAHM58MEEX4JJ");
+                hostedButtonId: "ID_PAYPAL_CARD_50"
+              }).render("#paypal-card-50");
             </script>
         </div>
     </div>
 
-    <!-- TEAM -->
     <div class="price-card">
         <div>
-            <h3>Team / Studio</h3>
+            <h3>100 Pezzi</h3>
+            <p class="price">1,50€<span style="font-size:16px; font-weight:normal;">/cad</span></p>
+            <ul>
+                <li>Totale ordine: 150€</li>
+                <li>Chip NFC invisibile integrato</li>
+                <li>Miglior prezzo unitario</li>
+                <li>Ideale per grandi reti o eventi</li>
+                <li>Aggiornamento dati incluso</li>
+            </ul>
+        </div>
+        <div>
+            <div id="paypal-card-100"></div>
+            <script>
+              paypal.HostedButtons({
+                hostedButtonId: "ID_PAYPAL_CARD_100"
+              }).render("#paypal-card-100");
+            </script>
+        </div>
+    </div>
+
+    <div class="price-card">
+        <div>
+            <h3>+100 Pezzi</h3>
             <p class="price" style="font-size: 26px;">Su Misura</p>
             <ul>
-                <li><strong>10+ Card</strong> per tutto il team</li>
-                <li>Stile coordinato per lo studio</li>
-                <li>Pagine web dedicate per ogni membro</li>
-                <li>Pannello di gestione contatti</li>
-                <li>Supporto diretto Whatsapp/Mail</li>
+                <li>Grandi stock e forniture</li>
+                <li>Prezzo ulteriormente ribassato</li>
+                <li>Pannello di gestione aziendale</li>
+                <li>Supporto diretto e prioritario</li>
             </ul>
         </div>
         <div>
             <a class="btn" style="background:#222; color:white; border:1px solid #333;"
-               href="mailto:hamza@sabr-tech.it?subject=Preventivo%20MagTag%20Team&body=Nome:%0A%0AAzienda:%0A%0ANumero%20card:%0A%0A">
-                Richiedi Preventivo
+               href="mailto:hamza@sabrtech.it?subject=Preventivo%20MagTag%20Business%20Cards&body=Nome:%0A%0AAzienda:%0A%0ANumero%20biglietti%20desiderati:%0A%0A">
+                Contattaci
             </a>
         </div>
     </div>
