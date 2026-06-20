@@ -4,7 +4,7 @@
     <link rel="icon" type="image/png" href="favicon_sabr.png">
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rouias Hamza | SABR</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -31,43 +31,54 @@
             overflow-x: hidden;
         }
 
-        /* LOGO AZIENDALE IN ALTO */
-        .brand-header {
+        /* STRUTTURA DEL CONTENITORE PRINCIPALE (BLOCCA SPOSTAMENTI) */
+        .wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
+            width: 100%;
+            max-width: 400px; /* Impedisce alla struttura di allargarsi oltre sul PC */
             z-index: 1;
         }
 
+        /* HEADER CON LOGO A SINISTRA DEL TESTO (COME DA FRECCIA BLU) */
+        .brand-header {
+            display: flex;
+            flex-direction: row; /* Allinea in orizzontale */
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* Spazio preciso tra logo e scritta */
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
         .brand-logo {
-            height: 50px; /* Logo in piccolo */
+            height: 65px; /* Logo ingrandito come richiesto */
             width: auto;
             object-fit: contain;
+            flex-shrink: 0;
         }
 
         .brand-title {
-            font-size: 36px;
+            font-size: 38px;
             font-weight: 800;
             letter-spacing: 4px;
             color: #ffffff;
             text-transform: uppercase;
+            line-height: 1;
         }
 
-        /* CARD IN STILE GLASSMORPHISM */
+        /* CARD IN STILE GLASSMORPHISM (BLOCCATA PER MOBILE) */
         .profile-card {
             backdrop-filter: blur(20px) saturate(160%);
             -webkit-backdrop-filter: blur(20px) saturate(160%);
             background: rgba(15, 15, 20, 0.60); 
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 24px;
-            padding: 35px 30px;
-            width: 100%;
-            max-width: 400px;
+            padding: 35px 25px;
+            width: 100%; /* Si adatta perfettamente allo schermo dello smartphone */
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             text-align: center;
-            z-index: 1;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
@@ -88,7 +99,7 @@
             display: inline-block;
             background: rgba(255, 255, 255, 0.08);
             color: #d1d1d1; 
-            font-size: 11px; 
+            font-size: 10px; 
             text-transform: uppercase; 
             letter-spacing: 1.5px; 
             padding: 6px 16px;
@@ -103,6 +114,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            width: 100%;
         }
 
         .contact-button { 
@@ -118,6 +130,7 @@
             font-size: 14px;
             transition: all 0.25s ease;
             text-align: left;
+            width: 100%;
         }
 
         /* Fix per icone stabili */
@@ -143,14 +156,13 @@
 
         /* Focus specifico sul brand Instagram al passaggio del mouse */
         .instagram-btn:hover i, .instagram-btn:hover svg {
-            color: #fccc63 !important; /* Colore caldo stile Instagram gradient */
+            color: #fccc63 !important;
         }
 
         /* FOOTER BRANDING */
         .footer-brand { 
             margin-top: 35px; 
             text-align: center; 
-            z-index: 1; 
         }
         
         .btn-sabr-link { 
@@ -170,47 +182,59 @@
             color: rgba(255, 255, 255, 0.8); 
             font-weight: 700; 
         }
+
+        /* MEDIA QUERY ADATTIVA DI SICUREZZA PER SCHERMI MOLTO PICCOLI */
+        @media (max-width: 360px) {
+            .brand-title { font-size: 32px; }
+            .brand-logo { height: 55px; }
+            .profile-card { padding: 25px 15px; }
+            .contact-button { font-size: 13px; padding: 14px 15px; }
+        }
     </style>
 </head>
 <body>
 
-    <header class="brand-header">
-        <img src="sabr_logo.png" alt="Logo SABR" class="brand-logo">
-        <h1 class="brand-title">SABR</h1>
-    </header>
+    <div class="wrapper">
 
-    <main class="profile-card">
-        <h2 class="profile-name">Rouias Hamza</h2>
-        <div class="profile-badge">Fondatore & Sviluppatore</div>
-        
-        <div class="contacts-list">
-            <a href="tel:3516063107" class="contact-button">
-                <i data-lucide="phone"></i>
-                <span>351 6063107</span>
-            </a>
-            
-            <a href="mailto:hamza@sabrtech.it" class="contact-button">
-                <i data-lucide="mail"></i>
-                <span>hamza@sabrtech.it</span>
-            </a>
-            
-            <a href="https://sabrtech.it" target="_blank" class="contact-button">
-                <i data-lucide="globe"></i>
-                <span>sabrtech.it</span>
-            </a>
-            
-            <a href="https://www.instagram.com/sabr.tech" target="_blank" class="contact-button instagram-btn">
-                <i data-lucide="instagram"></i>
-                <span>@sabr.tech</span>
-            </a>
-        </div>
-    </main>
+        <header class="brand-header">
+            <img src="sabr_logo.png" alt="Logo SABR" class="brand-logo">
+            <h1 class="brand-title">SABR</h1>
+        </header>
 
-    <footer class="footer-brand">
-        <a href="https://sabrtech.it" class="btn-sabr-link">
-            Powered by <span>SABR</span>
-        </a>
-    </footer>
+        <main class="profile-card">
+            <h2 class="profile-name">Rouias Hamza</h2>
+            <div class="profile-badge">Fondatore & Sviluppatore</div>
+            
+            <div class="contacts-list">
+                <a href="tel:3516063107" class="contact-button">
+                    <i data-lucide="phone"></i>
+                    <span>351 6063107</span>
+                </a>
+                
+                <a href="mailto:hamza@sabrtech.it" class="contact-button">
+                    <i data-lucide="mail"></i>
+                    <span>hamza@sabrtech.it</span>
+                </a>
+                
+                <a href="https://sabrtech.it" target="_blank" class="contact-button">
+                    <i data-lucide="globe"></i>
+                    <span>sabrtech.it</span>
+                </a>
+                
+                <a href="https://www.instagram.com/sabr.tech" target="_blank" class="contact-button instagram-btn">
+                    <i data-lucide="instagram"></i>
+                    <span>@sabr.tech</span>
+                </a>
+            </div>
+        </main>
+
+        <footer class="footer-brand">
+            <a href="https://sabrtech.it" class="btn-sabr-link">
+                Powered by <span>SABR</span>
+            </a>
+        </footer>
+
+    </div>
 
     <script>
         lucide.createIcons();
