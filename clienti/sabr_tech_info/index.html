@@ -107,7 +107,7 @@
             transition: color 0.25s ease;
         }
 
-        /* Effetti al passaggio del mouse sui contatti */
+        /* Effetti al passaggio del mouse sui contatti standard */
         .contact-button:hover {
             background: rgba(255, 255, 255, 0.09);
             border-color: rgba(255, 255, 255, 0.2);
@@ -116,7 +116,12 @@
         }
 
         .contact-button:hover i {
-            color: #ffffff; /* L'icona si illumina di bianco */
+            color: #ffffff; 
+        }
+
+        /* Effetto speciale dedicato a Instagram */
+        .instagram-btn:hover i {
+            color: #e1306c !important; /* Colore brand Instagram */
         }
 
         /* FOOTER BRANDING */
@@ -167,7 +172,7 @@
                 <span>sabrtech.it</span>
             </a>
             
-            <a href="https://www.instagram.com/sabr.tech" target="_blank" class="contact-button">
+            <a href="https://www.instagram.com/sabr.tech" target="_blank" class="contact-button instagram-btn">
                 <i data-lucide="instagram"></i>
                 <span>@sabr.tech</span>
             </a>
