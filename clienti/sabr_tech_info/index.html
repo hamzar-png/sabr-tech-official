@@ -4,7 +4,7 @@
     <link rel="icon" type="image/png" href="favicon-incom.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incom SRL | Digital Cards | SABR</title>
+    <title>Rouias Hamza | SABR</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
@@ -20,230 +20,106 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Centra verticalmente la scheda nella pagina */
             padding: 20px;
-            /* Lo sfondo precedente con l'immagine di Unsplash è stato rimosso per far spazio a Vanta.js */
         }
 
-        /* HEADER AZIENDA CON LOGO */
-        .company-header {
-            margin-top: 40px;
-            margin-bottom: 40px;
+        /* LAYOUT CONTENITORE */
+        .panels-container { 
             display: flex;
             justify-content: center;
-            align-items: center;
-            z-index: 1; /* Mantiene il testo sopra lo sfondo */
-        }
-
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 20px; 
-        }
-
-        .company-logo {
-            height: 60px; 
-            width: auto;
-        }
-
-        .company-header h1 {
-            font-size: 32px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        /* MEDIA QUERY: Per schermi piccoli riduciamo un po' il logo */
-        @media (max-width: 600px) {
-            .logo-wrapper { gap: 10px; }
-            .company-logo { height: 45px; }
-            .company-header h1 { font-size: 24px; letter-spacing: 3px; }
-        }
-
-        /* LAYOUT A GRIGLIA */
-        .panels-container { 
-            display: grid;
-            grid-template-columns: 1fr 1fr; 
-            gap: 20px;
             width: 100%;
-            max-width: 800px; 
-            z-index: 1; /* Mantiene le schede sopra lo sfondo */
+            max-width: 450px; /* Ottimizzato per una scheda singola sia su desktop che mobile */
+            z-index: 1; 
         }
 
         .card-panel {
             backdrop-filter: blur(15px);
-            background: rgba(0, 0, 0, 0.4); /* Scurito leggermente per leggere meglio i testi sulla nebbia chiara di Vanta */
-            padding: 20px;
+            background: rgba(0, 0, 0, 0.45); 
+            padding: 30px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            width: 100%;
         }
 
-        /* STRUTTURA AD ALBERO: I pannelli singoli sotto occupano due colonne su desktop */
-        .panel-center {
-            grid-column: 1 / span 2; 
-            justify-self: center;    
-            width: 50%;             
-            min-width: 300px;
+        .panel-name { 
+            font-size: 18px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 5px; 
+            font-weight: 700; 
+            text-align: center;
         }
-
-        /* LA SEDE VA SOTTO TUTTO */
-        .hq-panel {
-            grid-column: 1 / span 2;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px dashed rgba(255, 255, 255, 0.2);
-            margin-top: 20px;
+        
+        .panel-role { 
+            color: #aaa; 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 25px; 
+            text-align: center;
         }
-
-        .panel-name { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; font-weight: 700; }
-        .panel-role { color: #aaa; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
 
         .info-item { 
-            margin-bottom: 8px; 
-            padding: 5px 0; 
+            margin-bottom: 12px; 
+            padding: 8px 0; 
             border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
             flex-direction: column; 
             align-items: flex-start;
             text-decoration: none;
             color: white;
-            font-size: 11px;
+            font-size: 13px;
             word-break: break-all;
             transition: opacity 0.2s ease;
         }
 
         .info-item:hover {
-            opacity: 0.7; /* Feedback visivo al passaggio del mouse perché ora sono tutti link */
+            opacity: 0.7; 
         }
 
-        .info-label { font-size: 8px; text-transform: uppercase; color: #888; margin-bottom: 2px; }
+        .info-label { font-size: 9px; text-transform: uppercase; color: #888; margin-bottom: 4px; }
 
-        .final-actions { margin-top: 40px; text-align: center; width: 100%; z-index: 1; }
-        .btn-tour {
-            display: inline-block;
-            background: rgba(241, 101, 34, 0.2);
-            color: #fff;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 11px;
-            text-decoration: none;
-            text-transform: uppercase;
-            border: 1px solid #f16522;
-            margin-bottom: 20px;
-            transition: background 0.3s ease;
-        }
+        .final-actions { margin-top: 30px; text-align: center; width: 100%; z-index: 1; }
         
-        .btn-tour:hover {
-            background: rgba(241, 101, 34, 0.5);
-        }
-
-        .btn-sabr-brand { font-size: 10px; letter-spacing: 4px; color: rgba(255,255,255,0.4); text-decoration: none; text-transform: uppercase; }
+        .btn-sabr-brand { font-size: 11px; letter-spacing: 4px; color: rgba(255,255,255,0.4); text-decoration: none; text-transform: uppercase; }
         .btn-sabr-brand span { color: white; font-weight: 800; }
-
-        /* MEDIA QUERY PER CELLULARI PICCOLI */
-        @media (max-width: 600px) {
-            .panels-container { grid-template-columns: 1fr; }
-            .panel-center { grid-column: auto; width: 100%; }
-            .hq-panel { grid-column: auto; }
-        }
     </style>
 </head>
 <body>
 
-    <header class="company-header">
-        <div class="logo-wrapper">
-            <img src="incom-senza-sfondo.jpg" alt="Logo Incom" class="company-logo">
-            <h1>INCOM SRL</h1>
-        </div>
-    </header>
-
     <main class="panels-container">
 
         <div class="card-panel">
-            <h2 class="panel-name">MATTEO CAMPOLUCCI</h2>
-            <p class="panel-role">CEO - CONTROLLER</p>
-            <a href="tel:3357467729" class="info-item">
-                <span class="info-label">Mobile</span>
-                <span>335 7467729</span>
-            </a>
-            <a href="mailto:MATTEO.CAMPOLUCCI@INCOMSRL.COM" class="info-item">
-                <span class="info-label">Email</span>
-                <span>MATTEO.CAMPOLUCCI@INCOMSRL.COM</span>
-            </a>
-        </div>
-
-        <div class="card-panel">
-            <h2 class="panel-name">GIOVANNI CAMPOLUCCI</h2>
-            <p class="panel-role">CEO - SALES MANAGER</p>
-            <a href="tel:3357467730" class="info-item">
-                <span class="info-label">Mobile</span>
-                <span>335 7467730</span>
-            </a>
-            <a href="mailto:GIOVANNI.CAMPOLUCCI@INCOMSRL.COM" class="info-item">
-                <span class="info-label">Email</span>
-                <span>GIOVANNI.CAMPOLUCCI@INCOMSRL.COM</span>
-            </a>
-        </div>
-
-        <div class="card-panel">
-            <h2 class="panel-name">ROUIAS HAMZA</h2>
-            <p class="panel-role">IT & WEB DEVELOPER</p>
+            <h2 class="panel-name">Rouias Hamza</h2>
+            <p class="panel-role">Fondatore & Sviluppatore</p>
+            
             <a href="tel:3516063107" class="info-item">
                 <span class="info-label">Mobile</span>
                 <span>351 6063107</span>
             </a>
+            
             <a href="mailto:hamza@sabrtech.it" class="info-item">
                 <span class="info-label">Email</span>
                 <span>hamza@sabrtech.it</span>
             </a>
+            
             <a href="https://sabrtech.it" target="_blank" class="info-item">
                 <span class="info-label">Web</span>
                 <span>sabrtech.it</span>
             </a>
+            
             <a href="https://www.instagram.com/sabr.tech" target="_blank" class="info-item">
                 <span class="info-label">Instagram</span>
                 <span>@sabr.tech</span>
             </a>
         </div>
 
-        <div class="card-panel">
-            <h2 class="panel-name">MARIO CAMPOLUCCI</h2>
-            <p class="panel-role">TITOLARE</p>
-            <a href="tel:3356111230" class="info-item">
-                <span class="info-label">Mobile</span>
-                <span>335 6111230</span>
-            </a>
-        </div>
-
-        <div class="card-panel hq-panel">
-            <h2 class="panel-name" style="text-align: center; font-size: 12px; color: #aaa;">Sede Centrale</h2>
-            <a href="tel:073162000" class="info-item">
-                <span class="info-label">Ufficio</span>
-                <span>0731 62000</span>
-            </a>
-            <a href="https://www.incomsrl.com" target="_blank" class="info-item">
-                <span class="info-label">Web</span>
-                <span>www.incomsrl.com</span>
-            </a>
-            <div class="info-item">
-                <span class="info-label">Sede</span>
-                <span>Via Piana 17, Belvedere Ostrense</span>
-            </div>
-            <a href="mailto:info@incomsrl.com" class="info-item">
-                <span class="info-label">Email</span>
-                <span>info@incomsrl.com</span>
-            </a>
-        </div>
-
     </main>
 
     <footer class="final-actions">
-        <a href="https://mpembed.com/show/?m=iEUtqWMFWhb&minimap=1&mdir=1&lang=it" target="_blank" class="btn-tour">
-            Tour Industriale 3D
-        </a>
-        <br>
         <a href="https://sabrtech.it" class="btn-sabr-brand">
             Powered by <span>SABR</span>
         </a>
