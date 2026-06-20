@@ -1,129 +1,188 @@
 <!DOCTYPE html>
 <html lang="it">
-<head> 
-    <link rel="icon" type="image/png" href="favicon-incom.png">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rouias Hamza | SABR</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Rouias Hamza | SABR Tech</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Inter', sans-serif; 
+        }
         
         body { 
-            font-family: 'Inter', sans-serif; 
-            color: white; 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Centra verticalmente la scheda nella pagina */
-            padding: 20px;
-        }
-
-        /* LAYOUT CONTENITORE */
-        .panels-container { 
-            display: flex;
             justify-content: center;
-            width: 100%;
-            max-width: 450px; /* Ottimizzato per una scheda singola sia su desktop che mobile */
-            z-index: 1; 
+            padding: 20px;
+            overflow: hidden;
         }
 
-        .card-panel {
-            backdrop-filter: blur(15px);
-            background: rgba(0, 0, 0, 0.45); 
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
+        /* CARD PRINCIPALE IN STILE GLASSMORPHISM AVANZATO */
+        .profile-card {
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            background: rgba(15, 15, 20, 0.6); 
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 40px 30px;
             width: 100%;
-        }
-
-        .panel-name { 
-            font-size: 18px; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            margin-bottom: 5px; 
-            font-weight: 700; 
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.02) inset;
             text-align: center;
+            z-index: 1;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 
+                        0 0 50px rgba(255, 255, 255, 0.05) inset;
+        }
+
+        /* INFORMAZIONI PERSONALI */
+        .profile-name { 
+            font-size: 24px; 
+            color: #ffffff;
+            letter-spacing: -0.5px; 
+            font-weight: 700; 
+            margin-bottom: 8px;
         }
         
-        .panel-role { 
-            color: #aaa; 
+        .profile-badge { 
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.08);
+            color: #e0e0e0; 
             font-size: 11px; 
             text-transform: uppercase; 
-            letter-spacing: 1px; 
-            margin-bottom: 25px; 
-            text-align: center;
+            letter-spacing: 1.5px; 
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-weight: 500;
+            margin-bottom: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .info-item { 
-            margin-bottom: 12px; 
-            padding: 8px 0; 
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+        /* LISTA DEI LINK DI CONTATTO */
+        .contacts-list {
             display: flex;
-            flex-direction: column; 
-            align-items: flex-start;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-button { 
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 16px 20px; 
+            border-radius: 16px;
             text-decoration: none;
-            color: white;
-            font-size: 13px;
-            word-break: break-all;
-            transition: opacity 0.2s ease;
+            color: #f0f0f0;
+            font-size: 14px;
+            font-weight: 400;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
         }
 
-        .info-item:hover {
-            opacity: 0.7; 
+        .contact-button i {
+            color: #aaa;
+            width: 18px;
+            height: 18px;
+            transition: color 0.25s ease;
         }
 
-        .info-label { font-size: 9px; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+        /* Effetti al passaggio del mouse sui contatti */
+        .contact-button:hover {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transform: scale(1.02);
+        }
 
-        .final-actions { margin-top: 30px; text-align: center; width: 100%; z-index: 1; }
+        .contact-button:hover i {
+            color: #ffffff; /* L'icona si illumina di bianco */
+        }
+
+        /* FOOTER BRANDING */
+        .footer-brand { 
+            margin-top: 30px; 
+            text-align: center; 
+            z-index: 1; 
+        }
         
-        .btn-sabr-brand { font-size: 11px; letter-spacing: 4px; color: rgba(255,255,255,0.4); text-decoration: none; text-transform: uppercase; }
-        .btn-sabr-brand span { color: white; font-weight: 800; }
+        .btn-sabr-link { 
+            font-size: 11px; 
+            letter-spacing: 3px; 
+            color: rgba(255, 255, 255, 0.3); 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            transition: color 0.3s ease;
+        }
+        
+        .btn-sabr-link:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .btn-sabr-link span { 
+            color: rgba(255, 255, 255, 0.9); 
+            font-weight: 700; 
+        }
     </style>
 </head>
 <body>
 
-    <main class="panels-container">
-
-        <div class="card-panel">
-            <h2 class="panel-name">Rouias Hamza</h2>
-            <p class="panel-role">Fondatore & Sviluppatore</p>
-            
-            <a href="tel:3516063107" class="info-item">
-                <span class="info-label">Mobile</span>
+    <main class="profile-card">
+        <h1 class="profile-name">Rouias Hamza</h1>
+        <div class="profile-badge">Fondatore & Sviluppatore</div>
+        
+        <div class="contacts-list">
+            <a href="tel:3516063107" class="contact-button">
+                <i data-lucide="phone"></i>
                 <span>351 6063107</span>
             </a>
             
-            <a href="mailto:hamza@sabrtech.it" class="info-item">
-                <span class="info-label">Email</span>
+            <a href="mailto:hamza@sabrtech.it" class="contact-button">
+                <i data-lucide="mail"></i>
                 <span>hamza@sabrtech.it</span>
             </a>
             
-            <a href="https://sabrtech.it" target="_blank" class="info-item">
-                <span class="info-label">Web</span>
+            <a href="https://sabrtech.it" target="_blank" class="contact-button">
+                <i data-lucide="globe"></i>
                 <span>sabrtech.it</span>
             </a>
             
-            <a href="https://www.instagram.com/sabr.tech" target="_blank" class="info-item">
-                <span class="info-label">Instagram</span>
+            <a href="https://www.instagram.com/sabr.tech" target="_blank" class="contact-button">
+                <i data-lucide="instagram"></i>
                 <span>@sabr.tech</span>
             </a>
         </div>
-
     </main>
 
-    <footer class="final-actions">
-        <a href="https://sabrtech.it" class="btn-sabr-brand">
+    <footer class="footer-brand">
+        <a href="https://sabrtech.it" class="btn-sabr-link">
             Powered by <span>SABR</span>
         </a>
     </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
 
     <script>
     VANTA.FOG({
