@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <link rel="icon" type="image/png" href="favicon_sabr.png">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rouias Hamza | SABR</title>
@@ -46,18 +46,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px; 
+            margin-bottom: 10px; 
             width: 100%;
             height: auto;
         }
 
         .brand-logo {
-            height: 180px; /* Regola questo valore per cambiare la grandezza del logo */
-            width: auto;
-            object-fit: contain;
-            flex-shrink: 0;
-            display: block;
-        }
+    width: min(75vw, 250px);
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
 
         /* CARD IN STILE GLASSMORPHISM */
         .profile-card {
@@ -131,7 +131,13 @@
             flex-shrink: 0;
             transition: color 0.25s ease, transform 0.25s ease;
         }
-
+.contact-button .fa-instagram {
+    font-size: 20px;
+    width: 20px;
+    text-align: center;
+    color: #b3b3b3;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
         .contact-button:hover {
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.25);
@@ -143,9 +149,11 @@
             transform: scale(1.1);
         }
 
-        .instagram-btn:hover i, .instagram-btn:hover svg {
-            color: #fccc63 !important;
-        }
+       .instagram-btn:hover i,
+.instagram-btn:hover svg,
+.instagram-btn:hover .fa-instagram {
+    color: #E4405F !important;
+}
 
         /* FOOTER BRANDING */
         .footer-brand { 
@@ -172,11 +180,20 @@
         }
 
         /* MEDIA QUERY ADATTIVA DI SICUREZZA */
-        @media (max-width: 360px) {
-            .brand-logo { height: 90px; } /* Riduce proporzionalmente il logo solo su schermi piccolissimi */
-            .profile-card { padding: 25px 15px; }
-            .contact-button { font-size: 13px; padding: 14px 15px; }
-        }
+       @media (max-width: 360px) {
+    .brand-logo {
+        width: min(75vw, 180px);
+    }
+
+    .profile-card {
+        padding: 25px 15px;
+    }
+
+    .contact-button {
+        font-size: 13px;
+        padding: 14px 15px;
+    }
+}
     </style>
 </head>
 <body>
@@ -207,10 +224,10 @@
                     <span>sabrtech.it</span>
                 </a>
                 
-                <a href="https://www.instagram.com/sabr.tech" target="_blank" class="contact-button instagram-btn">
-                    <i data-lucide="instagram"></i>
-                    <span>@sabr.tech</span>
-                </a>
+               <a href="https://www.instagram.com/sabr.tech" target="_blank" class="contact-button instagram-btn">
+    <i class="fa-brands fa-instagram"></i>
+    <span>@sabr.tech</span>
+</a>
             </div>
         </main>
 
