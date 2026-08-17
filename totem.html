@@ -2,154 +2,52 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Totem Recensioni | SABR</title>
-<script src="https://www.paypal.com/sdk/js?client-id=BAA0ZRw_cFHV3nSzYdvvgEBm_KEcjwmrnIjcJFHKgUD8O1w1PKlUCmGOF1SprtlAtKy_bxTldY4gVDR4M4&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
-<style>
+<meta name="description" content="MagTag Totem Recensioni: trasforma ogni cliente in una recensione con un semplice tap. Richiedi il tuo preventivo.">
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #0f0f0f;
-    color: white;
-}
+<link rel="icon" type="image/png" href="favicon-sabr.png">
+<link rel="stylesheet" href="style.css">
 
-header {
-    padding: 20px;
-}
-
-header a {
-    color: #aaa;
-    text-decoration: none;
-}
-
-main {
-    padding: 40px;
-    text-align: center;
-}
-
-/* IMMAGINE */
-.product-img {
-    width: 380px;
-    margin: 40px auto;
-    display: block;
-    border-radius: 12px;
-}
-
-/* TESTO HERO */
-.hero-text {
-    max-width: 700px;
-    margin: 0 auto 60px auto;
-}
-
-.hero-text h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.hero-text p {
-    font-size: 18px;
-    color: #ccc;
-    line-height: 1.6;
-}
-
-/* PACCHETTI */
-.pricing-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
-}
-
-.price-card {
-    background: #1a1a1a;
-    padding: 30px;
-    width: 260px;
-    border-radius: 16px;
-    text-align: left;
-    transition: 0.3s;
-}
-
-.price-card:hover {
-    transform: translateY(-5px);
-}
-
-.price-card h3 {
-    margin-top: 15px;
-    margin-bottom: 10px;
-}
-
-.price {
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-.price-card ul {
-    list-style: none;
-    padding: 0;
-}
-
-.price-card li {
-    margin-bottom: 10px;
-    color: #bbb;
-}
-
-.btn {
-    margin-top: 20px;
-    padding: 10px;
-    width: 100%;
-    border: none;
-    background: white;
-    color: black;
-    cursor: pointer;
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-/* CARD IN EVIDENZA (SFONDO BIANCO) */
-.featured {
-    background: white;
-    color: black;
-}
-
-.featured .btn {
-    background: black;
-    color: white;
-}
-
-.featured li {
-    color: #444; /* Testo più scuro per essere leggibile su sfondo bianco */
-}
-
-.badge {
-    background: #000;
-    color: #fff;
-    padding: 5px 12px;
-    font-size: 12px;
-    border-radius: 20px;
-    display: inline-block;
-}
-
-/* Fix per badge dentro la card bianca */
-.featured .badge {
-    background: #e0e0e0;
-    color: #000;
-}
-
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&family=Jost:wght@400;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<!-- SFONDO 3D -->
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
 <header>
-    <a href="prodotti.html">← Torna ai prodotti</a>
+    <div class="brand">
+        <a href="index.html">
+            <img src="sabr-piccolo.jpg" class="logo-small" alt="Logo SABR">
+            <span>SABR</span>
+        </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Apri menu di navigazione">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="prodotti.html">Prodotti</a>
+        <a href="trackflow.html" class="nav-trackflow">TrackFlow<span class="badge-new">NEW</span></a>
+        <a onclick="openPopup('chiSiamoPopup')">Chi siamo</a>
+        <a onclick="openPopup('contattiPopup')">Contatti</a>
+    </nav>
 </header>
 
-<main>
+<main class="product-scene">
 
-    <img src="totem-personalizzato.jpg" class="product-img">
+    <p style="margin-bottom: 10px;"><a class="back-link" href="prodotti.html">← Torna ai prodotti</a></p>
 
-    <div class="hero-text">
-        <h1>Trasforma ogni cliente in una recensione.</h1>
+    <!-- SCENA: il totem sotto lo spotlight -->
+    <div class="scene-stage reveal">
+        <img src="totem-personalizzato.jpg" class="product-img" alt="Totem recensioni MagTag personalizzato">
+    </div>
+
+    <div class="hero-text reveal">
+        <h1 class="word-reveal">Trasforma ogni cliente in una recensione.</h1>
         <p>
             La maggior parte dei clienti soddisfatti non lascia recensioni.<br>
             Non perché non vogliono — ma perché è scomodo.<br><br>
@@ -159,158 +57,83 @@ main {
         </p>
     </div>
 
-    <h2 style="margin-top:60px; margin-bottom:30px;">Scegli il tuo Totem</h2>
-    <div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-bottom: 60px;">
-        <div style="text-align:center;">
-            <img src="totem-lite.jpg" style="width:260px; border-radius:12px;">
-            <h3 style="margin-top:15px;">Totem Lite</h3>
-            <p style="color:#aaa;">Semplice, efficace, pronto all'uso</p>
+    <h2 class="grad-chrome reveal" style="margin-top:60px;">Scegli il tuo Totem</h2>
+    <div class="totem-showcase">
+        <div class="glass-card tilt reveal">
+            <img src="totem-lite.jpg" alt="Totem Lite MagTag">
+            <h3>Totem Lite</h3>
+            <p>Semplice, efficace, pronto all'uso</p>
         </div>
-        <div style="text-align:center;">
-            <img src="totem-personalizzato.jpg" style="width:260px; border-radius:12px;">
-            <h3 style="margin-top:15px;">Totem Pro</h3>
-            <p style="color:#aaa;">Personalizzato per il tuo locale</p>
+        <div class="glass-card tilt reveal" data-reveal-delay="120">
+            <img src="totem-personalizzato.jpg" alt="Totem Pro MagTag personalizzato">
+            <h3>Totem Pro</h3>
+            <p>Personalizzato per il tuo locale</p>
         </div>
     </div>
 
-
-    <h2 style="margin-bottom:40px;">Scegli il tuo pacchetto - Totem Personalizzato</h2>
-    
-    <div class="pricing-grid">
-
-        <div class="price-card featured">
-            <span class="badge">Totem Personalizzato</span>
-            <h3>1 Pezzo</h3>
-            <p class="price">40€</p>
-            <ul>
-                <li>1 Totem personalizzato</li>
-                <li>Grafica dedicata</li>
-                <li>NFC integrato</li>
-            </ul>
-           <div id="paypal-container-7HMKQMS6CPEFW"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "7HMKQMS6CPEFW",
-  }).render("#paypal-container-7HMKQMS6CPEFW")
-</script>
-        </div>
-
-        <div class="price-card">
-            <h3>5 Pezzi</h3>
-            <p class="price">30€/cad</p>
-            <ul>
-                <li>Totale ordine: 150€</li>
-                <li>Totem personalizzati</li>
-                <li>Risparmio quantità</li>
-            </ul>
-            <div id="paypal-container-EH6B37XUV7QNC"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "EH6B37XUV7QNC",
-  }).render("#paypal-container-EH6B37XUV7QNC")
-</script>
-        </div>
-
-        <div class="price-card">
-            <h3>10 Pezzi</h3>
-            <p class="price">25€/cad</p>
-            <ul>
-                <li>Totale ordine: 250€</li>
-                <li>Prezzo migliore</li>
-                <li>Ideale per ogni tavolo</li>
-            </ul>
-           <div id="paypal-container-537KD5F7G4BNW"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "537KD5F7G4BNW",
-  }).render("#paypal-container-537KD5F7G4BNW")
-</script>
-        </div>
-
-        <div class="price-card">
-            <h3>+10 Pezzi</h3>
-            <p class="price">Preventivo</p>
-            <ul>
-                <li>Ordini personalizzati</li>
-                <li>Prezzi dedicati</li>
-                <li>Supporto diretto</li>
-            </ul>
-            <a href="mailto:hamza@sabrtech.it">
-                <button class="btn">Contattaci</button>
-            </a>
-        </div>
-
-    </div>
-
-
-    <h2 style="margin-bottom:40px; margin-top:60px;">Totem Lite Start</h2>
-
-    <div class="pricing-grid">
-
-        <div class="price-card">
-            <h3>1 Pezzo</h3>
-            <p class="price">30€</p>
-            <ul>
-                <li>1 Totem Lite</li>
-                <li>NFC integrato</li>
-                <li>Pronto all'uso</li>
-            </ul>
-            <div id="paypal-container-M3Y89GQR8MATC"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "M3Y89GQR8MATC",
-  }).render("#paypal-container-M3Y89GQR8MATC")
-</script>
-        </div>
-
-        <div class="price-card">
-            <h3>5 Pezzi</h3>
-            <p class="price">20€/cad</p>
-            <ul>
-                <li>Totale ordine: 100€</li>
-                <li>Prezzo quantità</li>
-                <li>Pronti all'uso</li>
-            </ul>
-           <div id="paypal-container-FHPXKW8YNHUPS"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "FHPXKW8YNHUPS",
-  }).render("#paypal-container-FHPXKW8YNHUPS")
-</script>
-        </div>
-
-        <div class="price-card">
-            <h3>10 Pezzi</h3>
-            <p class="price">15€/cad</p>
-            <ul>
-                <li>Totale ordine: 150€</li>
-                <li>Miglior prezzo</li>
-                <li>Ideale per ogni tavolo</li>
-            </ul>
-            <div id="paypal-container-FZXSN697V35E8"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "FZXSN697V35E8",
-  }).render("#paypal-container-FZXSN697V35E8")
-</script>
-        </div>
-
-        <div class="price-card">
-            <h3>+10 Pezzi</h3>
-            <p class="price">Preventivo</p>
-            <ul>
-                <li>Ordini grandi quantità</li>
-                <li>Prezzi personalizzati</li>
-                <li>Supporto diretto</li>
-            </ul>
-            <a href="mailto:hamza@sabrtech.it">
-                <button class="btn">Contattaci</button>
-            </a>
-        </div>
-
-    </div> 
+    <!-- CTA PREVENTIVO -->
+    <section class="quote-cta glass-card reveal">
+        <span class="label">Preventivo su misura</span>
+        <h2 class="grad-chrome">Richiedi preventivo</h2>
+        <p>
+            Un solo totem sul bancone o uno su ogni tavolo:
+            raccontaci com'è fatto il tuo locale e ti prepariamo una proposta dedicata,
+            con grafica personalizzata inclusa.
+        </p>
+        <a class="btn-primary"
+           href="mailto:hamza@sabrtech.it?subject=Preventivo%20MagTag%20Totem%20Recensioni&body=Nome:%0A%0AAttivit%C3%A0:%0A%0ANumero%20di%20totem%20desiderati:%0A%0A">
+            Richiedi preventivo
+        </a>
+    </section>
 
 </main>
+
+<footer>
+    <p>© SABR Tech — <a href="mailto:hamza@sabrtech.it">hamza@sabrtech.it</a></p>
+</footer>
+
+<!-- POPUP CHI SIAMO -->
+<div id="chiSiamoPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('chiSiamoPopup')">&times;</span>
+
+    <h2>Chi siamo</h2>
+
+    <p class="about-text">
+      Siamo una startup tech che trasforma oggetti semplici in esperienze intelligenti.<br>
+      Il nostro obiettivo è rendere la tecnologia invisibile, naturale, immediata.
+    </p>
+
+    <p class="quote">
+      "Il compito non è vedere ciò che nessuno ha mai visto,<br>
+      ma pensare ciò che nessuno ha mai pensato<br>
+      su ciò che tutti vedono."
+    </p>
+
+    <p class="author">— Arthur Schopenhauer</p>
+
+  </div>
+</div>
+
+<!-- POPUP CONTATTI -->
+<div id="contattiPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('contattiPopup')">&times;</span>
+
+    <h2>Contatti</h2>
+
+    <p class="about-text">Per collaborazioni o informazioni:</p>
+
+    <a href="mailto:hamza@sabrtech.it" class="mail-link">
+      hamza@sabrtech.it
+    </a>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/three-bg.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

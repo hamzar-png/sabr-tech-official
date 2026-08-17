@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SABR | MagTag</title>
+    <meta name="description" content="MagTag è il sistema che collega il mondo fisico e digitale. Condividi contatti, ottieni recensioni e semplifica ogni interazione.">
 
     <link rel="icon" type="image/png" href="favicon-sabr.png">
     <link rel="stylesheet" href="style.css">
@@ -13,82 +14,104 @@
 
 <body>
 
+<!-- SFONDO 3D -->
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
 <header>
     <div class="brand">
-        <img src="sabr-piccolo.jpg" class="logo-small">
-        <span>SABR</span>
+        <a href="index.html">
+            <img src="sabr-piccolo.jpg" class="logo-small" alt="Logo SABR">
+            <span>SABR</span>
+        </a>
     </div>
 
+    <button class="nav-toggle" aria-label="Apri menu di navigazione">
+        <span></span><span></span><span></span>
+    </button>
+
     <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="prodotti.html">Prodotti</a>
+        <a href="trackflow.html" class="nav-trackflow">TrackFlow<span class="badge-new">NEW</span></a>
         <a onclick="openPopup('chiSiamoPopup')">Chi siamo</a>
-        <a href="prodotti.html">MagTag</a>
-        <a href="trackflow.html" style="position: relative;">
-            TrackFlow
-            <span style="
-                position: absolute;
-                top: -8px;
-                right: -22px;
-                background: #38bdf8;
-                color: #0f172a;
-                font-size: 9px;
-                font-weight: bold;
-                padding: 2px 6px;
-                border-radius: 10px;
-                letter-spacing: 0;
-            ">NEW</span>
-        </a>
         <a onclick="openPopup('contattiPopup')">Contatti</a>
     </nav>
 </header>
 
 <main>
 
+<!-- HERO -->
 <section class="hero">
-    <img src="sabr.jpg" class="logo-main">
+    <img src="sabr.jpg" class="logo-main" alt="SABR - Fatti trovare con un tap">
 
-    <h1 style="font-size:40px; letter-spacing:5px;">
-        Fatti trovare. Ottieni clienti. Con un tap.
-    </h1>
+    <h1 class="word-reveal">Fatti trovare. Ottieni clienti. Con un tap.</h1>
 
-    <p style="max-width:600px;">
-        MagTag è il sistema che collega il mondo fisico e digitale. 
+    <p>
+        MagTag è il sistema che collega il mondo fisico e digitale.
         Condividi contatti, ottieni recensioni e semplifica ogni interazione.
     </p>
 
-    <a href="prodotti.html" class="btn-primary">Scopri MagTag</a>
+    <div class="hero-cta">
+        <a href="prodotti.html" class="btn-primary">Scopri MagTag</a>
+        <a href="trackflow.html" class="btn-ghost-blue">🆕 Scopri TrackFlow</a>
+    </div>
 
-    <a href="trackflow.html" style="
-        display: inline-block;
-        margin-top: 15px;
-        background: transparent;
-        border: 1px solid #38bdf8;
-        color: #38bdf8;
-        padding: 12px 28px;
-        border-radius: 50px;
-        font-weight: 700;
-        text-decoration: none;
-        font-size: 14px;
-        transition: 0.3s;
-    ">
-        🆕 Scopri TrackFlow
-    </a>
+    <div class="scroll-hint">Scroll</div>
 </section>
 
-<section class="product-preview">
+<!-- ANTEPRIMA: LE DUE ANIME DEL BRAND -->
+<section class="section product-preview">
     <div class="container">
-        <span class="label">MAGTAG</span>
-        <h1>Un sistema. Infiniti utilizzi.</h1>
+        <span class="label reveal">MAGTAG</span>
+        <h2 class="reveal" data-reveal-delay="100">Un sistema. Infiniti utilizzi.</h2>
 
-        <p>
+        <p class="reveal" data-reveal-delay="200">
             Usa MagTag per networking, recensioni, social o sicurezza personale.
             Una sola tecnologia, infinite possibilità.
         </p>
+        <div class="chrome-line reveal" data-reveal-delay="280"></div>
+    </div>
 
-        <a href="prodotti.html" class="btn-primary">Vedi prodotti</a>
+    <div class="container-wide">
+        <div class="dual-grid">
+
+            <!-- MAGTAG: hardware NFC -->
+            <div class="dual-card glass-card tilt reveal">
+                <span class="tag">Hardware NFC</span>
+                <h3 class="grad-chrome">MagTag</h3>
+                <p>
+                    Business card NFC, totem recensioni e accessori smart.
+                    Un tap sul telefono e il tuo mondo digitale si apre:
+                    contatti, recensioni, social e molto altro.
+                </p>
+                <div>
+                    <a href="prodotti.html" class="btn-primary">Vedi prodotti</a>
+                </div>
+            </div>
+
+            <!-- TRACKFLOW: software -->
+            <div class="dual-card glass-card tilt card-trackflow reveal" data-reveal-delay="150">
+                <span class="tag" style="color: var(--blue-1);">Software SaaS</span>
+                <h3 class="grad-blue">TrackFlow</h3>
+                <p>
+                    Software di tracciamento spedizioni per aziende.
+                    I tuoi clienti sanno sempre dov'è la merce.
+                    Monitoraggio multi-corriere, 100% cloud.
+                </p>
+                <div>
+                    <a href="trackflow.html" class="btn-trackflow">Scopri TrackFlow</a>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
 </main>
+
+<footer>
+    <p>© SABR Tech — <a href="mailto:hamza@sabrtech.it">hamza@sabrtech.it</a></p>
+</footer>
 
 <!-- POPUP CHI SIAMO -->
 <div id="chiSiamoPopup" class="popup">
@@ -120,15 +143,17 @@
 
     <h2>Contatti</h2>
 
-    <p>Per collaborazioni o informazioni:</p>
+    <p class="about-text">Per collaborazioni o informazioni:</p>
 
-    <a href="mailto:hamza@sabrtech.it" style="color:white; display:block; margin-top:20px;">
+    <a href="mailto:hamza@sabrtech.it" class="mail-link">
       hamza@sabrtech.it
     </a>
 
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/three-bg.js"></script>
 <script src="script.js"></script>
 
 </body>

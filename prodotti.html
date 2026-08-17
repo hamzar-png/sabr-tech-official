@@ -4,166 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prodotti | SABR</title>
+    <meta name="description" content="MagTag: business card NFC, totem recensioni, portachiavi e ciondoli smart. E TrackFlow, il software di tracciamento spedizioni.">
+
+    <link rel="icon" type="image/png" href="favicon-sabr.png">
     <link rel="stylesheet" href="style.css">
 
-    <!-- PAYPAL -->
-    <script 
-      src="https://www.paypal.com/sdk/js?client-id=BAA0ZRw_cFHV3nSzYdvvgEBm_KEcjwmrnIjcJFHKgUD8O1w1PKlUCmGOF1SprtlAtKy_bxTldY4gVDR4M4&components=hosted-buttons&disable-funding=venmo&currency=EUR">
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&family=Jost:wght@400;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- SFONDO 3D -->
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
 <header>
     <div class="brand">
-    <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: white;">
-        <img src="sabr-piccolo.jpg" class="logo-small">
-        <span>SABR</span>
-    </a>
-</div>
-    <nav><a href="index.html">Home</a></nav>
+        <a href="index.html">
+            <img src="sabr-piccolo.jpg" class="logo-small" alt="Logo SABR">
+            <span>SABR</span>
+        </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Apri menu di navigazione">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="prodotti.html" class="active">Prodotti</a>
+        <a href="trackflow.html" class="nav-trackflow">TrackFlow<span class="badge-new">NEW</span></a>
+        <a onclick="openPopup('chiSiamoPopup')">Chi siamo</a>
+        <a onclick="openPopup('contattiPopup')">Contatti</a>
+    </nav>
 </header>
 
 <main class="page-prodotti">
 
-<h1>MAGTAG</h1>
-<p>Un sistema per connettere persone e informazioni con un semplice tap.</p>
+<span class="label reveal">Prodotti</span>
+<h1 class="page-title reveal" data-reveal-delay="100">MAGTAG</h1>
+<p class="reveal" data-reveal-delay="200">Un sistema, infiniti utilizzi. Scegli il tuo MagTag nello showroom.</p>
 
-<!-- BUSINESS -->
-<h2 style="margin-top:80px;">Per il tuo business</h2>
+<!-- ============================================================
+     SHOWROOM 3D — stile Need for Speed
+     ============================================================ -->
+<section class="showroom" aria-label="Showroom prodotti MagTag">
 
-<div class="grid-prodotti">
+    <div class="showroom-stage">
 
-<!-- BIGLIETTO -->
-<div class="card-p">
+        <button type="button" class="sr-arrow prev" aria-label="Prodotto precedente">‹</button>
+        <button type="button" class="sr-arrow next" aria-label="Prodotto successivo">›</button>
 
-    <p style="text-align:center; margin-bottom:10px; color:#aaa;">
-        Tocca per girare la card
-    </p>
-
-    <div class="model-container">
-        <div class="card-3d" onclick="this.classList.toggle('flip')">
-            <div class="card-inner">
-
-                <!-- FRONTE -->
-                <div class="card-front">
-                    <img src="biglietto-fronte.jpg">
+        <!-- SLIDE 1 · BUSINESS CARD NFC (flip card) -->
+        <div class="sr-slide" data-name="Business Card">
+            <div class="sr-visual">
+                <span class="sr-hint">Tocca la card per girarla</span>
+                <div class="sr-floor"></div>
+                <div class="card-3d">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="biglietto-fronte.jpg" alt="Biglietto da visita NFC MagTag - fronte">
+                        </div>
+                        <div class="card-back">
+                            <img src="biglietto-retro.jpg" alt="Biglietto da visita NFC MagTag - retro">
+                        </div>
+                    </div>
                 </div>
-
-                <!-- RETRO -->
-                <div class="card-back">
-                    <img src="biglietto-retro.jpg">
-                </div>
-
+            </div>
+            <div class="sr-data" hidden>
+                <h3 class="sr-name">Business Card NFC</h3>
+                <p class="sr-desc">
+                    Condividi i tuoi contatti in un secondo.
+                    Un tap e il tuo profilo è già sul telefono di chi incontri.
+                </p>
+                <a href="biglietto.html" class="btn-primary">Scopri di più</a>
             </div>
         </div>
+
+        <!-- SLIDE 2 · TOTEM RECENSIONI -->
+        <div class="sr-slide" data-name="Totem">
+            <div class="sr-visual">
+                <div class="sr-floor"></div>
+                <img src="totem-personalizzato.jpg" class="sr-product-img" alt="Totem recensioni MagTag personalizzato">
+                <img src="totem-personalizzato.jpg" class="sr-mirror" alt="" aria-hidden="true">
+            </div>
+            <div class="sr-data" hidden>
+                <h3 class="sr-name">Totem Recensioni</h3>
+                <p class="sr-desc">
+                    I clienti lasciano recensioni con un tap.
+                    Più recensioni, più fiducia, più clienti.
+                </p>
+                <a href="totem.html" class="btn-primary">Scopri di più</a>
+            </div>
+        </div>
+
+        <!-- SLIDE 3 · PORTACHIAVI SMART -->
+        <div class="sr-slide" data-name="Portachiavi">
+            <div class="sr-visual">
+                <div class="sr-floor"></div>
+                <img src="smart_portachiavi.jpg" class="sr-product-img" alt="Portachiavi smart MagTag">
+                <img src="smart_portachiavi.jpg" class="sr-mirror" alt="" aria-hidden="true">
+            </div>
+            <div class="sr-data" hidden>
+                <span class="sr-badge">In sviluppo · Pre-ordine</span>
+                <h3 class="sr-name">Portachiavi Smart</h3>
+                <p class="sr-desc">
+                    Prodotto in fase di sviluppo: stiamo perfezionando ogni dettaglio
+                    per offrirti la migliore esperienza possibile.
+                    Disponibilità limitata per il primo batch — contattaci per il pre-ordine.
+                </p>
+                <a href="mailto:hamza@sabrtech.it?subject=Pre-ordine%20Portachiavi%20Smart%20MagTag" class="btn-primary">Contattaci</a>
+            </div>
+        </div>
+
+        <!-- SLIDE 4 · CIONDOLO SMART -->
+        <div class="sr-slide" data-name="Ciondolo">
+            <div class="sr-visual">
+                <div class="sr-floor"></div>
+                <img src="collare-animali.jpg" class="sr-product-img" alt="Ciondolo smart MagTag per animali">
+                <img src="collare-animali.jpg" class="sr-mirror" alt="" aria-hidden="true">
+            </div>
+            <div class="sr-data" hidden>
+                <h3 class="sr-name">Ciondolo Smart</h3>
+                <p class="sr-desc">
+                    Chi trova il tuo animale può contattarti subito.
+                    Un tap sul ciondolo e il tuo numero compare all'istante.
+                </p>
+                <a href="mailto:hamza@sabrtech.it?subject=Ciondolo%20Smart%20MagTag" class="btn-primary">Contattaci</a>
+            </div>
+        </div>
+
     </div>
 
-    <div class="card-info">
-        <h3>Business Card NFC</h3>
-        <p>Condividi i tuoi contatti in un secondo.</p>
-        <a href="biglietto.html" class="btn-personalizza">Scopri di più</a>
+    <!-- INFO PRODOTTO ATTIVO -->
+    <div class="sr-info" aria-live="polite"></div>
+
+    <!-- INDICATORI DI POSIZIONE -->
+    <div class="sr-dots"></div>
+
+</section>
+
+<!-- ============================================================
+     SOFTWARE + SERVIZIO PERSONALIZZATO
+     ============================================================ -->
+<h2 class="section-subtitle reveal"><span class="grad-blue">Software</span></h2>
+
+<div class="grid-prodotti">
+
+    <div class="card-p tilt card-trackflow reveal">
+        <div class="model-container trackflow-visual">
+            <div style="text-align: center;">
+                <span style="font-size: 60px;">📦</span>
+                <p class="tf-name" style="margin-top: 10px;">TrackFlow</p>
+            </div>
+        </div>
+
+        <div class="card-info">
+            <h3>TrackFlow</h3>
+            <p>Software di tracciamento spedizioni per aziende. I tuoi clienti sanno sempre dov'è la merce.</p>
+            <a href="trackflow.html" class="btn-trackflow" style="text-align:center;">Scopri TrackFlow</a>
+        </div>
+    </div>
+
+    <!-- SERVIZIO PERSONALIZZATO -->
+    <div class="card-p tilt custom-card reveal" data-reveal-delay="120">
+        <div class="model-container">
+            <span class="custom-icon">✦</span>
+        </div>
+
+        <div class="card-info">
+            <h3>Servizio Personalizzato</h3>
+            <p>
+                Hai un'idea che non vedi in vetrina?
+                Progettiamo insieme la soluzione NFC su misura per te:
+                eventi, hotel, flotte aziendali e molto altro.
+            </p>
+            <a href="mailto:hamza@sabrtech.it?subject=Servizio%20personalizzato%20MagTag" class="btn-contact-custom">Contattaci</a>
+        </div>
     </div>
 
 </div>
 
-<!-- TOTEM -->
-<div class="card-p">
-    <a href="totem.html">
-        <div class="model-container">
-            <img src="totem-personalizzato.jpg" class="img-product">
-        </div>
+</main>
+
+<footer>
+    <p>© SABR Tech — <a href="mailto:hamza@sabrtech.it">hamza@sabrtech.it</a></p>
+</footer>
+
+<!-- POPUP CHI SIAMO -->
+<div id="chiSiamoPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('chiSiamoPopup')">&times;</span>
+
+    <h2>Chi siamo</h2>
+
+    <p class="about-text">
+      Siamo una startup tech che trasforma oggetti semplici in esperienze intelligenti.<br>
+      Il nostro obiettivo è rendere la tecnologia invisibile, naturale, immediata.
+    </p>
+
+    <p class="quote">
+      "Il compito non è vedere ciò che nessuno ha mai visto,<br>
+      ma pensare ciò che nessuno ha mai pensato<br>
+      su ciò che tutti vedono."
+    </p>
+
+    <p class="author">— Arthur Schopenhauer</p>
+
+  </div>
+</div>
+
+<!-- POPUP CONTATTI -->
+<div id="contattiPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('contattiPopup')">&times;</span>
+
+    <h2>Contatti</h2>
+
+    <p class="about-text">Per collaborazioni o informazioni:</p>
+
+    <a href="mailto:hamza@sabrtech.it" class="mail-link">
+      hamza@sabrtech.it
     </a>
 
-    <div class="card-info">
-        <h3>Totem Recensioni</h3>
-        <p>I clienti lasciano recensioni con un tap.</p>
-        <a href="totem.html" class="btn-personalizza">Scopri di più</a>
-    </div>
+  </div>
 </div>
 
-</div>
-
-<!-- PERSONALE -->
-<h2 style="margin-top:80px;">Per uso personale</h2>
-
-<div class="grid-prodotti">
-
-<!-- PORTACHIAVI -->
-<div class="card-p">
-    <div class="model-container">
-        <img src="smart_portachiavi.jpg" class="img-product">
-    </div>
-
-    <div class="card-info">
-        <h3>PORTA CHIAVI SMART</h3>
-        <p>
-Prodotto in fase di sviluppo.<br>
-Stiamo perfezionando ogni dettaglio per offrirti la migliore esperienza possibile.
-</p>
-<p style="font-size:12px; color:#888; margin-top:5px;">
-Disponibilità limitata per il primo batch.
-</p>
-<p style="margin-top:15px; color:#f16522; font-weight:bold;">
-🔥 Pre-ordine attivo: -10% per i primi clienti
-</p>
-
-<p style="font-size:12px; color:#888; margin-top:5px;">
-Prenotalo ora e ricevi lo sconto al lancio. PREZZO UFFICIALE 25€
-</p>
-
-        <div id="paypal-container-SV9AUB3HJ7YFN"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "SV9AUB3HJ7YFN",
-  }).render("#paypal-container-SV9AUB3HJ7YFN")
-</script>
-</div>
-</div>
-<!-- CIONDOLO -->
-<div class="card-p">
-    <div class="model-container">
-        <img src="collare-animali.jpg" class="img-product">
-    </div>
-
-    <div class="card-info">
-        <h3>CIONDOLO SMART</h3>
-        <p>Chi trova il tuo animale può contattarti subito.</p>
-
-        <p style="margin-top:15px; font-weight:bold;">Acquista ora</p>
-
-        <div id="paypal-container-G3GTS5F2K68Y8"></div>
-        <script>
-          paypal.HostedButtons({
-            hostedButtonId: "G3GTS5F2K68Y8",
-          }).render("#paypal-container-G3GTS5F2K68Y8")
-        </script>
-    </div>
-</div>
-
-</div>
-<!-- SOFTWARE -->
-<h2 style="margin-top:80px;">Software</h2>
-
-<div class="grid-prodotti">
-
-<div class="card-p">
-    <div class="model-container" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); display: flex; align-items: center; justify-content: center;">
-        <div style="text-align: center;">
-            <span style="font-size: 60px;">📦</span>
-            <p style="color: #38bdf8; font-size: 24px; font-weight: bold; margin-top: 10px;">TrackFlow</p>
-        </div>
-    </div>
-
-    <div class="card-info">
-        <h3>TrackFlow</h3>
-        <p>Software di tracciamento spedizioni per aziende. I tuoi clienti sanno sempre dov'è la merce.</p>
-        <a href="https://trackflow-phi-red.vercel.app/" target="_blank" class="btn-personalizza">Prova TrackFlow</a>
-    </div>
-</div>
-
-</div>
-</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/three-bg.js"></script>
+<script src="assets/showroom.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

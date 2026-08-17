@@ -4,71 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grazie | SABR</title>
+    <meta name="description" content="Grazie per aver scelto SABR. Configura il tuo Totem Recensioni.">
+    <link rel="icon" type="image/png" href="favicon-sabr.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&family=Jost:wght@400;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: #050505;
-            color: white;
-            text-align: center;
-            font-family: 'Inter', sans-serif;
-        }
-        .thank-you-container {
-            padding: 150px 20px;
-            max-width: 600px;
-            margin: auto;
-        }
-        h1 {
-            font-family: 'Jost', sans-serif;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-        p {
-            color: #aaa;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-        .btn-form {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 18px 35px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .btn-form:hover {
-            transform: scale(1.05);
-            background: #eee;
-        }
-    </style>
 </head>
 <body>
 
+<canvas id="bg3d" aria-hidden="true"></canvas>
+
 <header>
     <div class="brand">
-        <img src="sabr-piccolo.jpg" class="logo-small">
-        <span>SABR</span>
+        <a href="index.html">
+            <img src="sabr-piccolo.jpg" class="logo-small" alt="Logo SABR">
+            <span>SABR</span>
+        </a>
     </div>
+
+    <button class="nav-toggle" aria-label="Apri menu di navigazione">
+        <span></span><span></span><span></span>
+    </button>
+
     <nav>
         <a href="index.html">Home</a>
-        <a href="prodotti.html">MagTag</a>
+        <a href="prodotti.html">Prodotti</a>
+        <a href="trackflow.html" class="nav-trackflow">TrackFlow<span class="badge-new">NEW</span></a>
+        <a onclick="openPopup('chiSiamoPopup')">Chi siamo</a>
+        <a onclick="openPopup('contattiPopup')">Contatti</a>
     </nav>
 </header>
 
 <main class="thank-you-container">
-    <h1>Pagamento ricevuto 🎉</h1>
-    <p>Grazie per aver scelto SABR. Il tuo ordine è in fase di elaborazione.<br>
+    <span class="label">Ordine confermato</span>
+    <h1 class="grad-chrome word-reveal">Grazie per aver scelto SABR 🎉</h1>
+    <p>Il tuo ordine è in fase di elaborazione.<br>
     Per configurare il tuo <strong>Totem Recensioni</strong>, clicca il pulsante qui sotto e forniscici i link necessari.</p>
 
-    <a href="https://forms.gle/HXiH9H7pVbBrvyTi6" class="btn-form">
+    <a href="https://forms.gle/HXiH9H7pVbBrvyTi6" class="btn-primary">
         Configura il tuo Totem
     </a>
 </main>
+
+<footer>
+    <p>© SABR Tech — <a href="mailto:hamza@sabrtech.it">hamza@sabrtech.it</a></p>
+</footer>
+
+<!-- POPUP CHI SIAMO -->
+<div id="chiSiamoPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('chiSiamoPopup')">&times;</span>
+
+    <h2>Chi siamo</h2>
+
+    <p class="about-text">
+      Siamo una startup tech che trasforma oggetti semplici in esperienze intelligenti.<br>
+      Il nostro obiettivo è rendere la tecnologia invisibile, naturale, immediata.
+    </p>
+
+    <p class="quote">
+      "Il compito non è vedere ciò che nessuno ha mai visto,<br>
+      ma pensare ciò che nessuno ha mai pensato<br>
+      su ciò che tutti vedono."
+    </p>
+
+    <p class="author">— Arthur Schopenhauer</p>
+
+  </div>
+</div>
+
+<!-- POPUP CONTATTI -->
+<div id="contattiPopup" class="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup('contattiPopup')">&times;</span>
+
+    <h2>Contatti</h2>
+
+    <p class="about-text">Per collaborazioni o informazioni:</p>
+
+    <a href="mailto:hamza@sabrtech.it" class="mail-link">
+      hamza@sabrtech.it
+    </a>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/three-bg.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
