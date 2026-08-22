@@ -17,16 +17,16 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     >
 
-    <title>Rouias Ilham | SABR</title>
+    <title>POWER | Rouias Ilham</title>
 
 
     <!-- FONT -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;700;800&display=swap"
         rel="stylesheet"
     >
 
-    <!-- LUCIDE ICONS -->
+    <!-- LUCIDE -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
 
@@ -65,11 +65,6 @@
             position: relative;
 
 
-            /*
-             * PARETE
-             *
-             * Base calda + luce naturale.
-             */
             background:
 
                 radial-gradient(
@@ -90,9 +85,8 @@
         }
 
 
-        /*
-         * TEXTURE LEGGERISSIMA DELLA PARETE
-         */
+        /* Texture parete */
+
         body::before {
 
             content: "";
@@ -106,7 +100,6 @@
             z-index: 0;
 
             opacity: 0.28;
-
 
             background:
 
@@ -128,9 +121,8 @@
         }
 
 
-        /*
-         * RIFLESSO DI LUCE
-         */
+        /* Luce sulla parete */
+
         body::after {
 
             content: "";
@@ -165,7 +157,7 @@
 
 
         /* =====================================================
-           CONTENITORE
+           WRAPPER
         ===================================================== */
 
         .wrapper {
@@ -196,16 +188,17 @@
 
             width: 100%;
 
-            padding: 42px 25px 35px;
+            /*
+             * Più spazio sopra per il marchio POWER
+             */
+            padding: 82px 25px 35px;
 
             border-radius: 24px;
 
 
-            /*
-             * GLASSMORPHISM
-             */
             background:
                 rgba(25, 22, 19, 0.60);
+
 
             backdrop-filter:
                 blur(24px) saturate(135%);
@@ -263,23 +256,15 @@
 
             position: absolute;
 
-            /*
-             * Sporge sopra la card
-             */
-            top: -75px;
+            top: -72px;
 
-            /*
-             * Sporge leggermente a sinistra
-             */
-            left: -35px;
-
+            left: -34px;
 
             width: 165px;
+
             height: 165px;
 
-
             z-index: 10;
-
 
             pointer-events: none;
         }
@@ -290,16 +275,13 @@
             display: block;
 
             width: 100%;
+
             height: 100%;
 
             object-fit: contain;
 
 
-            /*
-             * Ombra molto morbida
-             */
             filter:
-
                 drop-shadow(
                     0 10px 12px
                     rgba(0, 0, 0, 0.22)
@@ -308,7 +290,49 @@
 
 
         /* =====================================================
-           NOME
+           NOME COMPAGNIA - POWER
+        ===================================================== */
+
+        .company-name {
+
+            /*
+             * Font elegante simile al marchio
+             */
+            font-family: 'Cinzel', serif;
+
+            font-size: 42px;
+
+            line-height: 1;
+
+            font-weight: 600;
+
+            letter-spacing: 3px;
+
+            color: #102c58;
+
+
+            /*
+             * Piccola ombra per staccarlo
+             * dalla superficie della card
+             */
+            text-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.16);
+
+
+            /*
+             * POWER rimane perfettamente
+             * centrato rispetto alla card
+             */
+            text-align: center;
+
+            width: 100%;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =====================================================
+           NOME PERSONA
         ===================================================== */
 
         .profile-name {
@@ -320,7 +344,6 @@
             font-weight: 700;
 
             margin-bottom: 6px;
-
 
             text-shadow:
                 0 2px 8px
@@ -473,7 +496,7 @@
 
 
         /* =====================================================
-           HOVER CONTATTI
+           HOVER
         ===================================================== */
 
         .contact-button:hover {
@@ -481,14 +504,11 @@
             background:
                 rgba(255, 255, 255, 0.14);
 
-
             border-color:
                 rgba(255, 255, 255, 0.28);
 
-
             color:
                 #ffffff;
-
 
             transform:
                 translateY(-1px);
@@ -500,7 +520,6 @@
 
             color:
                 #ffffff !important;
-
 
             transform:
                 scale(1.1);
@@ -563,7 +582,7 @@
 
 
         /* =====================================================
-           MOBILE
+           RESPONSIVE
         ===================================================== */
 
         @media (max-width: 480px) {
@@ -571,17 +590,29 @@
             .profile-card {
 
                 padding:
-                    42px 20px 30px;
+                    78px 20px 30px;
             }
 
 
             .parrot-logo {
 
                 width: 150px;
+
                 height: 150px;
 
-                top: -68px;
+                top: -66px;
+
                 left: -30px;
+            }
+
+
+            .company-name {
+
+                font-size: 37px;
+
+                letter-spacing: 2.5px;
+
+                margin-bottom: 17px;
             }
         }
 
@@ -598,17 +629,27 @@
             .profile-card {
 
                 padding:
-                    38px 15px 25px;
+                    72px 15px 25px;
             }
 
 
             .parrot-logo {
 
                 width: 135px;
+
                 height: 135px;
 
                 top: -60px;
+
                 left: -25px;
+            }
+
+
+            .company-name {
+
+                font-size: 33px;
+
+                letter-spacing: 2px;
             }
 
 
@@ -633,31 +674,41 @@
 
 
         <!-- =================================================
-             CARD PROFILO
+             CARD
         ================================================= -->
 
         <main class="profile-card">
 
 
             <!-- =================================================
-                 LOGO PAPPAGALLO
+                 PAPPAGALLO
 
-                 Sostituisci questo file con il PNG
-                 del pappagallo con sfondo trasparente.
+                 IMPORTANTE:
+                 usa un PNG con SOLO il pappagallo
+                 e sfondo trasparente.
             ================================================== -->
 
             <div class="parrot-logo">
 
                 <img
                     src="logo_pappagallo.png"
-                    alt="Logo"
+                    alt="Logo POWER"
                 >
 
             </div>
 
 
             <!-- =================================================
-                 NOME
+                 NOME COMPAGNIA
+            ================================================== -->
+
+            <div class="company-name">
+                POWER
+            </div>
+
+
+            <!-- =================================================
+                 PERSONA
             ================================================== -->
 
             <h2 class="profile-name">
@@ -777,7 +828,7 @@
 
 
     <!-- =====================================================
-         LUCIDE
+         ICONS
     ===================================================== -->
 
     <script>
