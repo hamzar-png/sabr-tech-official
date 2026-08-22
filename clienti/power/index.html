@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <link rel="icon" type="image/png" href="favicon_sabr.png">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Rouias Ilham | SABR</title>
+
+
+    <!-- FONT -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- LUCIDE ICONS -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+
+        /* =====================================================
+           BODY / PARETE
+        ===================================================== */
+
+        body {
+
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            overflow-x: hidden;
+
+            position: relative;
+
+
+            /*
+             * PARETE
+             *
+             * Base calda + luce naturale.
+             */
+            background:
+
+                radial-gradient(
+                    ellipse at 20% 15%,
+                    rgba(255, 248, 232, 0.98) 0%,
+                    rgba(241, 226, 202, 0.75) 18%,
+                    rgba(206, 185, 157, 0.35) 42%,
+                    transparent 68%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #b7a28a 0%,
+                    #d9cab4 35%,
+                    #b29c83 65%,
+                    #75685b 100%
+                );
+        }
+
+
+        /*
+         * TEXTURE LEGGERISSIMA DELLA PARETE
+         */
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            opacity: 0.28;
+
+
+            background:
+
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.035) 0px,
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px,
+                    transparent 7px
+                ),
+
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0,0,0,0.025) 0px,
+                    rgba(0,0,0,0.025) 1px,
+                    transparent 1px,
+                    transparent 5px
+                );
+        }
+
+
+        /*
+         * RIFLESSO DI LUCE
+         */
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 850px;
+            height: 850px;
+
+            max-width: 90vw;
+            max-height: 90vw;
+
+            top: -330px;
+            left: -250px;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(255, 250, 239, 0.48) 0%,
+                    rgba(255, 235, 202, 0.20) 32%,
+                    rgba(255, 220, 180, 0.06) 50%,
+                    transparent 72%
+                );
+
+            filter: blur(25px);
+        }
+
+
+        /* =====================================================
+           CONTENITORE
+        ===================================================== */
+
+        .wrapper {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            width: 100%;
+
+            max-width: 400px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .profile-card {
+
+            position: relative;
+
+            width: 100%;
+
+            padding: 42px 25px 35px;
+
+            border-radius: 24px;
+
+
+            /*
+             * GLASSMORPHISM
+             */
+            background:
+                rgba(25, 22, 19, 0.60);
+
+            backdrop-filter:
+                blur(24px) saturate(135%);
+
+            -webkit-backdrop-filter:
+                blur(24px) saturate(135%);
+
+
+            border:
+                1px solid rgba(255, 255, 255, 0.22);
+
+
+            box-shadow:
+
+                0 25px 55px
+                rgba(35, 25, 15, 0.32),
+
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.12);
+
+
+            text-align: center;
+
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .profile-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(255, 255, 255, 0.35);
+
+            box-shadow:
+
+                0 30px 65px
+                rgba(35, 25, 15, 0.38),
+
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.15);
+        }
+
+
+        /* =====================================================
+           PAPPAGALLO
+        ===================================================== */
+
+        .parrot-logo {
+
+            position: absolute;
+
+            /*
+             * Sporge sopra la card
+             */
+            top: -75px;
+
+            /*
+             * Sporge leggermente a sinistra
+             */
+            left: -35px;
+
+
+            width: 165px;
+            height: 165px;
+
+
+            z-index: 10;
+
+
+            pointer-events: none;
+        }
+
+
+        .parrot-logo img {
+
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+
+            /*
+             * Ombra molto morbida
+             */
+            filter:
+
+                drop-shadow(
+                    0 10px 12px
+                    rgba(0, 0, 0, 0.22)
+                );
+        }
+
+
+        /* =====================================================
+           NOME
+        ===================================================== */
+
+        .profile-name {
+
+            font-size: 22px;
+
+            color: #ffffff;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+
+
+            text-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* =====================================================
+           RUOLO
+        ===================================================== */
+
+        .profile-badge {
+
+            display: inline-block;
+
+            background:
+                rgba(255, 255, 255, 0.09);
+
+            color:
+                #eeeeee;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            padding: 6px 16px;
+
+            border-radius: 100px;
+
+            font-weight: 500;
+
+            margin-bottom: 30px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.10);
+        }
+
+
+        /* =====================================================
+           CONTATTI
+        ===================================================== */
+
+        .contacts-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+            width: 100%;
+        }
+
+
+        .contact-button {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+
+            background:
+                rgba(255, 255, 255, 0.055);
+
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.10);
+
+
+            padding:
+                16px 20px;
+
+
+            border-radius: 16px;
+
+
+            text-decoration: none;
+
+
+            color:
+                #f0f0f0;
+
+
+            font-size: 14px;
+
+
+            transition:
+                all 0.25s ease;
+
+
+            text-align: left;
+
+
+            width: 100%;
+
+
+            box-shadow:
+
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.04);
+        }
+
+
+        .contact-button i,
+        .contact-button svg {
+
+            color:
+                #d0d0d0 !important;
+
+
+            width: 20px !important;
+
+            height: 20px !important;
+
+
+            flex-shrink: 0;
+
+
+            transition:
+                color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        /* =====================================================
+           INSTAGRAM
+        ===================================================== */
+
+        .contact-button .fa-instagram {
+
+            font-size: 20px;
+
+            width: 20px;
+
+            text-align: center;
+
+            color:
+                #d0d0d0;
+
+            transition:
+                color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+
+        /* =====================================================
+           HOVER CONTATTI
+        ===================================================== */
+
+        .contact-button:hover {
+
+            background:
+                rgba(255, 255, 255, 0.14);
+
+
+            border-color:
+                rgba(255, 255, 255, 0.28);
+
+
+            color:
+                #ffffff;
+
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .contact-button:hover i,
+        .contact-button:hover svg {
+
+            color:
+                #ffffff !important;
+
+
+            transform:
+                scale(1.1);
+        }
+
+
+        .instagram-btn:hover i,
+        .instagram-btn:hover svg,
+        .instagram-btn:hover .fa-instagram {
+
+            color:
+                #E4405F !important;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer-brand {
+
+            margin-top: 35px;
+
+            text-align: center;
+        }
+
+
+        .btn-sabr-link {
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            color:
+                rgba(255, 255, 255, 0.55);
+
+            text-decoration: none;
+
+            text-transform: uppercase;
+
+            transition:
+                color 0.3s ease;
+        }
+
+
+        .btn-sabr-link:hover {
+
+            color:
+                rgba(255, 255, 255, 0.9);
+        }
+
+
+        .btn-sabr-link span {
+
+            color:
+                rgba(255, 255, 255, 0.95);
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
+            .profile-card {
+
+                padding:
+                    42px 20px 30px;
+            }
+
+
+            .parrot-logo {
+
+                width: 150px;
+                height: 150px;
+
+                top: -68px;
+                left: -30px;
+            }
+        }
+
+
+        @media (max-width: 360px) {
+
+            body {
+
+                padding:
+                    15px;
+            }
+
+
+            .profile-card {
+
+                padding:
+                    38px 15px 25px;
+            }
+
+
+            .parrot-logo {
+
+                width: 135px;
+                height: 135px;
+
+                top: -60px;
+                left: -25px;
+            }
+
+
+            .contact-button {
+
+                font-size: 13px;
+
+                padding:
+                    14px 15px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="wrapper">
+
+
+        <!-- =================================================
+             CARD PROFILO
+        ================================================= -->
+
+        <main class="profile-card">
+
+
+            <!-- =================================================
+                 LOGO PAPPAGALLO
+
+                 Sostituisci questo file con il PNG
+                 del pappagallo con sfondo trasparente.
+            ================================================== -->
+
+            <div class="parrot-logo">
+
+                <img
+                    src="logo_pappagallo.png"
+                    alt="Logo"
+                >
+
+            </div>
+
+
+            <!-- =================================================
+                 NOME
+            ================================================== -->
+
+            <h2 class="profile-name">
+                Rouias Ilham
+            </h2>
+
+
+            <!-- =================================================
+                 RUOLO
+            ================================================== -->
+
+            <div class="profile-badge">
+                Marketing &amp; Brand Strategist
+            </div>
+
+
+            <!-- =================================================
+                 CONTATTI
+            ================================================== -->
+
+            <div class="contacts-list">
+
+
+                <!-- TELEFONO -->
+
+                <a
+                    href="tel:+212600605006"
+                    class="contact-button"
+                >
+
+                    <i data-lucide="phone"></i>
+
+                    <span>
+                        +212 600 605006
+                    </span>
+
+                </a>
+
+
+                <!-- EMAIL -->
+
+                <a
+                    href="mailto:hamza@sabrtech.it"
+                    class="contact-button"
+                >
+
+                    <i data-lucide="mail"></i>
+
+                    <span>
+                        hamza@sabrtech.it
+                    </span>
+
+                </a>
+
+
+                <!-- SITO -->
+
+                <a
+                    href="https://sabrtech.it"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-button"
+                >
+
+                    <i data-lucide="globe"></i>
+
+                    <span>
+                        sabrtech.it
+                    </span>
+
+                </a>
+
+
+                <!-- INSTAGRAM -->
+
+                <a
+                    href="https://www.instagram.com/ilham_rouias"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-button instagram-btn"
+                >
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                    <span>
+                        @ilham_rouias
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </main>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="footer-brand">
+
+            <a
+                href="https://sabrtech.it"
+                class="btn-sabr-link"
+            >
+
+                Powered by
+                <span>SABR</span>
+
+            </a>
+
+        </footer>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         LUCIDE
+    ===================================================== -->
+
+    <script>
+
+        lucide.createIcons();
+
+    </script>
+
+
+</body>
+
+</html>
